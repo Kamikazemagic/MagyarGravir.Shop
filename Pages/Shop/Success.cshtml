@@ -1,0 +1,43 @@
+﻿@page
+@model MagyarGravir.Shop.Pages.Shop.SuccessModel
+@{
+    Layout = "/Pages/Shared/_PublicLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Köszönjük – Magyar Gravír</title>
+    <style>
+        body {
+            background: #111;
+            color: white;
+            font-family: Arial;
+            padding: 40px;
+        }
+
+        .msg {
+            font-size: 22px;
+            color: #eab308;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Köszönjük a rendelést!</h1>
+
+    @if (Model.Order != null)
+    {
+        <p class="msg">Rendelés száma: #@Model.Order.Id</p>
+    }
+    else
+    {
+        <p>Rendelés nem található.</p>
+    }
+
+    <a href="/Shop/Cart" style="color:#eab308;">Vissza a kosárhoz</a>
+
+</body>
+</html>

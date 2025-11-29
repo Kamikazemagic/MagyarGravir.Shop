@@ -1,0 +1,102 @@
+﻿@page
+@model MagyarGravir.Shop.Pages.Shop.ProductModel
+@{
+    Layout = "/Pages/Shared/_PublicLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="utf-8" />
+    <title>@Model.CurrentProduct?.Name – Magyar Gravír</title>
+
+    <style>
+        body {
+            background: #111;
+            color: white;
+            font-family: Arial;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            display: flex;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .image-wrapper img {
+            width: 400px;
+            max-width: 100%;
+            border-radius: 8px;
+            border: 2px solid #333;
+        }
+
+        .details {
+            max-width: 500px;
+        }
+
+        .price {
+            font-size: 26px;
+            color: #eab308;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .category {
+            margin-top: 8px;
+            color: #ccc;
+        }
+
+        .desc {
+            margin-top: 20px;
+            line-height: 1.4;
+        }
+
+        button {
+            margin-top: 25px;
+            padding: 12px 22px;
+            background: #eab308;
+            color: black;
+            border: none;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    @if (Model.CurrentProduct != null)
+    {
+        <div class="container">
+
+            <div class="image-wrapper">
+                <img src="@Model.CurrentProduct.MainImagePath" alt="@Model.CurrentProduct.Name" />
+            </div>
+
+            <div class="details">
+                <h1>@Model.CurrentProduct.Name</h1>
+
+                <div class="price">@Model.CurrentProduct.Price Ft</div>
+
+                <div class="category">
+                    Kategória: @Model.CurrentProduct.Category?.Name
+                </div>
+
+                <div class="desc">
+                    @Model.CurrentProduct.Description
+                </div>
+
+                <form method="post">
+                    <button type="submit">🛒 Kosárba</button>
+                </form>
+
+            </div>
+        </div>
+    }
+
+</body>
+</html>

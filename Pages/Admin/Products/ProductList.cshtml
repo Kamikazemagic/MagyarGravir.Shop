@@ -1,0 +1,98 @@
+﻿@page
+@model MagyarGravir.Shop.Pages.Admin.Products.ProductListModel
+@{
+    Layout = "/Pages/Admin/_AdminLayout.cshtml";
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Termékek kezelése – Admin</title>
+
+    <style>
+        body {
+            background: #111;
+            color: white;
+            font-family: Arial;
+            padding: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            border-bottom: 1px solid #333;
+        }
+
+        th {
+            background: #222;
+        }
+
+        a.button {
+            display: inline-block;
+            padding: 8px 15px;
+            background: #eab308;
+            color: black;
+            font-weight: bold;
+            border-radius: 6px;
+            text-decoration: none;
+        }
+
+        .edit {
+            color: #3b82f6;
+        }
+
+        .delete {
+            color: #ef4444;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Termékek kezelése</h1>
+
+    <a href="/Admin/Products/Create" class="button">Új termék</a>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Név</th>
+                <th>Kategória</th>
+                <th>Ár</th>
+                <th>Kép</th>
+                <th>Műveletek</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var p in Model.ProductList)
+            {
+                <tr>
+                    <td>@p.Id</td>
+                    <td>@p.Name</td>
+                    <td>@p.Category?.Name</td>
+                    <td>@p.Price Ft</td>
+                    <td>
+                        @if (!string.IsNullOrEmpty(p.MainImagePath))
+                        {
+                            <img src="/@p.MainImagePath" width="60" />
+                        }
+                    </td>
+                    <td>
+                        <a class="edit" href="/Admin/Products/Edit?id=@p.Id">Szerkesztés</a> |
+                        <a class="delete" href="/Admin/Products/Delete?id=@p.Id">Törlés</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</body>
+</html>

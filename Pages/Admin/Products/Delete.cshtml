@@ -1,0 +1,70 @@
+﻿@page
+@model MagyarGravir.Shop.Pages.Admin.Products.DeleteModel
+@{
+    Layout = "/Pages/Admin/_AdminLayout.cshtml";
+}
+
+
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="utf-8" />
+    <title>Termék törlése</title>
+
+    <style>
+        body {
+            background: #111;
+            color: white;
+            font-family: Arial;
+            padding: 30px;
+        }
+
+        .warning {
+            color: #ef4444;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 18px;
+            font-size: 16px;
+            font-weight: bold;
+            background: #ef4444;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        a {
+            color: #eab308;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Termék törlése</h1>
+
+    @if (Model.ProductToDelete != null)
+    {
+        <p class="warning">Biztosan törölni szeretnéd ezt a terméket?</p>
+
+        <p><strong>Név:</strong> @Model.ProductToDelete.Name</p>
+        <p><strong>Kategória:</strong> @Model.ProductToDelete.Category?.Name</p>
+        <p><strong>Ár:</strong> @Model.ProductToDelete.Price Ft</p>
+
+        @if (!string.IsNullOrEmpty(Model.ProductToDelete.MainImagePath))
+        {
+            <img src="@Model.ProductToDelete.MainImagePath" width="150" />
+        }
+
+        <form method="post">
+            <button type="submit">Igen, törlöm</button>
+        </form>
+
+        <br />
+        <a href="/Admin/Products">← Mégse</a>
+    }
+</body>
+</html>

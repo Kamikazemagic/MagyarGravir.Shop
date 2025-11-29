@@ -1,0 +1,100 @@
+﻿@page
+@model MagyarGravir.Shop.Pages.Shop.CheckoutModel
+@{
+    Layout = "/Pages/Shared/_PublicLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="utf-8" />
+    <title>Rendelés – Magyar Gravír</title>
+
+    <style>
+        body {
+            background: #111;
+            color: white;
+            font-family: Arial;
+            padding: 20px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 6px;
+            border: none;
+            font-size: 16px;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 12px 20px;
+            background: #eab308;
+            border: none;
+            color: black;
+            font-weight: bold;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        table {
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        td {
+            padding: 8px;
+        }
+
+        .price {
+            color: #eab308;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Rendelés leadása</h1>
+
+    @if (Model.Cart.Count == 0)
+    {
+        <p>A kosár üres.</p>
+    }
+    else
+    {
+        <h2>Rendelés összegzése</h2>
+
+        <table>
+            @foreach (var item in Model.Cart)
+            {
+                <tr>
+                    <td>@item.Name (x @item.Quantity)</td>
+                    <td class="price">@((item.Quantity * item.Price)) Ft</td>
+                </tr>
+            }
+        </table>
+
+        <p style="margin-top:10px; font-size:20px;">
+            Összesen:
+            <span class="price">
+                @Model.Cart.Sum(i => i.Price * i.Quantity) Ft
+            </span>
+        </p>
+
+        <h2>Vásárlói adatok</h2>
+
+        <form method="post">
+            <input asp-for="CustomerName" placeholder="Teljes név" required />
+            <input asp-for="Email" placeholder="Email cím" required />
+            <input asp-for="Address" placeholder="Szállítási cím" required />
+
+            <textarea asp-for="Note" rows="4" placeholder="Megjegyzés (opcionális)"></textarea>
+
+            <button type="submit">Rendelés elküldése</button>
+        </form>
+    }
+
+</body>
+</html>

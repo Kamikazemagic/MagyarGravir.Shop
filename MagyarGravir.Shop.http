@@ -1,0 +1,6 @@
+@MagyarGravir.Shop_HostAddress = http://localhost:5034
+
+GET {{MagyarGravir.Shop_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

@@ -1,0 +1,100 @@
+﻿body {
+    margin: 0;
+    background: #0d0d0d url("/img/bg-dark.png") center/cover no-repeat fixed;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    color: #ddd;
+}
+
+/* Fent a fejléces belépett admin rész */
+.admin-header {
+    background: rgba(0,0,0,0.75);
+    border-bottom: 1px solid #222;
+    padding: 15px 25px;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.6);
+}
+
+    .admin-header .logo {
+        height: 50px;
+    }
+
+    .admin-header .title {
+        font-size: 22px;
+        color: #fff;
+        font-weight: 600;
+        letter-spacing: 1px;
+        text-shadow: 0 0 10px rgba(0,150,255,0.3);
+    }
+
+.admin-content {
+    padding: 40px;
+}
+
+/* Kártyák */
+.card {
+    background: rgba(20,20,20,0.85);
+    border: 1px solid #333;
+    padding: 25px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.6);
+}
+
+    .card h2 {
+        margin-top: 0;
+        color: #eab308;
+    }
+
+/* Táblázatok */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+    table th {
+        background: #111;
+        padding: 10px;
+        border-bottom: 1px solid #333;
+        text-align: left;
+        color: #eab308;
+    }
+
+    table td {
+        padding: 10px;
+        border-bottom: 1px solid #333;
+    }
+
+    table tr:hover {
+        background: rgba(255,255,255,0.05);
+    }
+
+/* Gombok */
+button, .btn {
+    background: #eab308;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    color: black;
+    transition: 0.2s;
+}
+
+    button:hover,
+    .btn:hover {
+        background: #ffcb32;
+    }
+
+/* Linkek */
+a {
+    color: #4da3ff;
+    text-decoration: none;
+}
+
+    a:hover {
+        color: #79bdff;
+    }
