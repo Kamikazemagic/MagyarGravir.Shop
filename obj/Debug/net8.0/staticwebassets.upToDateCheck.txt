@@ -1,0 +1,10 @@
+wwwroot\app.css
+wwwroot\app.js
+wwwroot\css\admin.css
+wwwroot\header-big.png
+wwwroot\img\bg-dark.png
+wwwroot\img\logo-header.png
+wwwroot\logo-background.png
+wwwroot\Magyar-Gravir-logo.png
+wwwroot\uploads\products\3dc38d91-da91-4016-8a5d-552d9901dfb5.jpg
+wwwroot\uploads\products\8666918d-5e40-42f6-b768-6295b53e0b2d.jpg
