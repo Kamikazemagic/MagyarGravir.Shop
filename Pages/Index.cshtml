@@ -1,0 +1,129 @@
+﻿@page
+@model MagyarGravir.Shop.Pages.IndexModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="utf-8" />
+    <title>Magyar Gravír – Egyedi gravírozott ajándékok</title>
+
+    <style>
+        body {
+            background: #111;
+            color: white;
+            font-family: Arial;
+            margin: 0;
+            padding: 0;
+        }
+
+        .hero {
+            background: url('/header-big.png') center/cover no-repeat;
+            height: 330px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 48px;
+            font-weight: bold;
+            text-shadow: 0 0 20px #000;
+        }
+
+        .section {
+            padding: 40px;
+        }
+
+        h2 {
+            color: #eab308;
+            margin-bottom: 20px;
+        }
+
+        .category-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .category-item {
+            background: #222;
+            padding: 15px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+            border: 1px solid #333;
+        }
+
+            .category-item:hover {
+                background: #333;
+            }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .product-box {
+            background: #1b1b1b;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            border: 1px solid #333;
+        }
+
+            .product-box img {
+                width: 100%;
+                max-height: 180px;
+                object-fit: cover;
+                border-radius: 6px;
+                margin-bottom: 10px;
+            }
+
+        .product-name {
+            font-weight: bold;
+        }
+
+        .product-price {
+            color: #eab308;
+            margin-top: 5px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="hero">
+        Magyar Gravír
+    </div>
+
+    <div class="section">
+        <h2>Kategóriák</h2>
+        <div class="category-list">
+            @foreach (var c in Model.Categories)
+            {
+                <a class="category-item" href="/Shop/Category?id=@c.Id" target="_blank">
+                    @c.Name
+                </a>
+            }
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Új termékek</h2>
+        <div class="products">
+            @foreach (var p in Model.FeaturedProducts)
+            {
+                <a href="/Shop/Product?id=@p.Id" class="product-box" target="_blank">
+                    <img src="@p.MainImagePath" />
+                    <div class="product-name">@p.Name</div>
+                    <div class="product-price">@p.Price Ft</div>
+                </a>
+            }
+        </div>
+    </div>
+
+</body>
+</html>

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MagyarGravir.Shop")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+99dbea50d13a88cf275269a1b96f82dbdb4ca979")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1f403be261dc4db9d370fef7944191704dd8fbf4")]
 [assembly: System.Reflection.AssemblyProductAttribute("MagyarGravir.Shop")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MagyarGravir.Shop")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

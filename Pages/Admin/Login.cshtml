@@ -69,15 +69,11 @@
 
             <button type="submit">Belépés</button>
 
-            <div class="error">
-                <div asp-validation-summary="All"></div>
-            </div>
+            @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+            {
+                <div class="error">@Model.ErrorMessage</div>
+            }
         </form>
-
-        @if (!string.IsNullOrEmpty(Model.ErrorMessage))
-        {
-            <div class="error">@Model.ErrorMessage</div>
-        }
     </div>
 
 </body>

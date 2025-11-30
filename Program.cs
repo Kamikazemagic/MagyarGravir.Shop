@@ -10,15 +10,8 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 // Razor Pages
 builder.Services.AddRazorPages();
 
-// SessionExtensions
+// Session (kosárhoz)
 builder.Services.AddSession();
-
-//Shop Pages
-builder.Services.AddRazorPages(options =>
-{
-    options.Conventions.AddPageRoute("/Shop/Index", "/Shop");
-});
-
 
 // Cookie-s admin auth
 builder.Services.AddAuthentication("AdminCookie")
@@ -41,12 +34,9 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseSession();
 app.UseAuthentication();
 app.UseAuthorization();
-app.UseSession();
-
-// ?? Hibakódok megjelenítése fejlesztés közben
-app.UseStatusCodePages();
 
 app.MapRazorPages();
 

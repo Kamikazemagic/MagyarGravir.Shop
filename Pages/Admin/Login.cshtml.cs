@@ -34,9 +34,7 @@ namespace MagyarGravir.Shop.Pages.Admin
 
                 await HttpContext.SignInAsync("AdminCookie", principal);
 
-                // !!! EZ A HELYES REDIRECT
-                return RedirectToPage("/Admin/Dashboard");
-
+                return RedirectToPage("/Admin/Index");
             }
 
             ErrorMessage = "Hibás felhasználónév vagy jelszó!";
