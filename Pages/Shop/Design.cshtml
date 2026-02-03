@@ -1,0 +1,208 @@
+@page
+@model MagyarGravir.Shop.Pages.Shop.DesignModel
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Egyedi tervezés – " + (Model.Product?.Name ?? "");
+}
+
+<section class="mg-section designer-hero">
+    <div class="designer-headline">
+        <span class="designer-pill">Egyedi tervező</span>
+        <h1>@Model.Product?.Name – saját felirattal vagy képpel</h1>
+        <p>
+            Válaszd ki, hogy <strong>feliratot</strong> vagy <strong>képet</strong> szeretnél, és nézd meg azonnal,
+            hogyan mutatna a pénzcsipeszen / terméken. A tervet a rendszer elmenti a rendeléshez.
+        </p>
+    </div>
+</section>
+
+<section class="designer-main">
+    <div class="designer-preview-card">
+        <div class="designer-preview-inner">
+            <div class="designer-preview-header">
+                <div class="designer-chip">Élő előnézet</div>
+                <span class="designer-hint">Fogd meg és mozgasd a feliratot vagy a képet a gravírozható felületen.</span>
+            </div>
+
+            <div class="designer-moneyclip-frame">
+                @* Alapkép – itt jelenik meg a pénzcsipesz fotója *@
+                @if (!string.IsNullOrEmpty(Model.Product?.MainImagePath))
+                {
+                    <img src="@Model.Product.MainImagePath" class="moneyclip-base" alt="@Model.Product.Name" />
+                }
+                else
+                {
+                    <img src="~/header-big.png" class="moneyclip-base" alt="Pénzcsipesz előnézet" />
+                }
+
+                <div id="overlayZone" class="overlay-zone">
+                    <div id="overlayText" class="moneyclip-overlay-text draggable font-alexbrush">
+                        @(Model.CustomText ?? Model.InitialText)
+                    </div>
+                    <img id="overlayImage" class="moneyclip-overlay-image draggable" style="display:none;" alt="Feltöltött minta" />
+                </div>
+            </div>
+
+            <div class="designer-preview-footer">
+                <span>💡 Tipp: rövid, tömör felirat, maximum 2–3 sorral mutat a legjobban.</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="designer-form-card">
+        <form method="post" enctype="multipart/form-data">
+            <input type="hidden" asp-for="ProductId" />
+
+            <div class="designer-mode-toggle">
+                <label>
+                    <input type="radio" name="DesignMode" value="text" @(Model.DesignMode == "text" ? "checked" : "") />
+                    Csak felirat
+                </label>
+                <label>
+                    <input type="radio" name="DesignMode" value="image" @(Model.DesignMode == "image" ? "checked" : "") />
+                    Csak kép / logó
+                </label>
+            </div>
+
+            <div id="textBlock">
+                <label for="customTextInput">Felirat a gravírozáshoz:</label>
+                <input asp-for="CustomText" id="customTextInput" placeholder="Pl. Befektetünk – kifektetünk" />
+                <span class="designer-help">
+                    Több sor is megadható – soronként nyomj Entert.
+                </span>
+
+                <div class="designer-font-select">
+                    Betűtípus:
+                    <select id="fontSelector">
+                        <option value="alex" selected>Alex Brush (kézírás)</option>
+                        <option value="cinzel">Cinzel (klasszikus)</option>
+                        <option value="sans">Poppins (letisztult)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div id="imageBlock" style="display:none;">
+                <label for="uploadInput">Kép feltöltése (logó, grafika, fotó – JPG / PNG):</label>
+                <input asp-for="UploadImage" type="file" accept="image/*" id="uploadInput" />
+                <span class="designer-help">
+                    A kép nem kerül automatikusan gyártásba, minden rendelés esetén egyeztetek veled a véglegesítés előtt.
+                </span>
+            </div>
+
+            <hr class="designer-divider" />
+
+            <button type="submit" class="designer-submit">
+                Kosárba ezzel az egyedi tervvel 🛒
+            </button>
+
+            <p class="designer-small">
+                A kosárban bármikor módosíthatod vagy törölheted a rendelést, mielőtt véglegesíted.
+            </p>
+        </form>
+    </div>
+</section>
+
+@section Scripts {
+<script>
+    (function () {
+        const modeRadios = document.querySelectorAll('input[name="DesignMode"]');
+        const textBlock = document.getElementById('textBlock');
+        const imageBlock = document.getElementById('imageBlock');
+        const textInput = document.getElementById('customTextInput');
+        const overlayText = document.getElementById('overlayText');
+        const uploadInput = document.getElementById('uploadInput');
+        const overlayImage = document.getElementById('overlayImage');
+        const fontSelector = document.getElementById('fontSelector');
+        const overlayZone = document.getElementById('overlayZone');
+
+        function updateMode() {
+            const selected = document.querySelector('input[name="DesignMode"]:checked')?.value || 'text';
+            if (selected === 'text') {
+                textBlock.style.display = 'block';
+                imageBlock.style.display = 'none';
+                overlayText.style.display = 'flex';
+                overlayImage.style.display = 'none';
+            } else {
+                textBlock.style.display = 'none';
+                imageBlock.style.display = 'block';
+                overlayText.style.display = 'none';
+                overlayImage.style.display = 'block';
+            }
+        }
+
+        modeRadios.forEach(r => r.addEventListener('change', updateMode));
+        updateMode();
+
+        if (textInput && overlayText) {
+            textInput.addEventListener('input', function () {
+                const v = this.value;
+                overlayText.textContent = v && v.trim().length > 0
+                    ? v
+                    : "@Model.InitialText";
+            });
+        }
+
+        if (fontSelector && overlayText) {
+            fontSelector.addEventListener('change', function () {
+                overlayText.classList.remove('font-alexbrush', 'font-cinzel', 'font-sans');
+                if (this.value === 'alex') overlayText.classList.add('font-alexbrush');
+                else if (this.value === 'cinzel') overlayText.classList.add('font-cinzel');
+                else overlayText.classList.add('font-sans');
+            });
+        }
+
+        if (uploadInput && overlayImage) {
+            uploadInput.addEventListener('change', function (evt) {
+                const file = evt.target.files[0];
+                if (!file) return;
+
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    overlayImage.src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            });
+        }
+
+        function makeDraggable(el) {
+            if (!el) return;
+            el.addEventListener('mousedown', function (e) {
+                e.preventDefault();
+
+                const zoneRect = overlayZone.getBoundingClientRect();
+                const elRect = el.getBoundingClientRect();
+
+                const shiftX = e.clientX - elRect.left;
+                const shiftY = e.clientY - elRect.top;
+
+                function moveAt(pageX, pageY) {
+                    let newLeft = pageX - shiftX - zoneRect.left;
+                    let newTop = pageY - shiftY - zoneRect.top;
+
+                    newLeft = Math.max(0, Math.min(newLeft, zoneRect.width - el.offsetWidth));
+                    newTop = Math.max(0, Math.min(newTop, zoneRect.height - el.offsetHeight));
+
+                    el.style.left = newLeft + "px";
+                    el.style.top = newTop + "px";
+                }
+
+                function onMouseMove(ev) {
+                    moveAt(ev.pageX, ev.pageY);
+                }
+
+                document.addEventListener('mousemove', onMouseMove);
+
+                document.addEventListener('mouseup', function mouseUpHandler() {
+                    document.removeEventListener('mousemove', onMouseMove);
+                    document.removeEventListener('mouseup', mouseUpHandler);
+                });
+            });
+
+            el.ondragstart = function () { return false; };
+        }
+
+        makeDraggable(overlayText);
+        makeDraggable(overlayImage);
+    })();
+</script>
+}

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "+iGT4P8ZJnQ=",
+  "dgSpecHash": "zFmJUO+TZ2k=",
   "success": true,
-  "projectFilePath": "C:\\Visual Studio\\MagyarGravir\\MagyarGravir.Shop\\MagyarGravir.Shop\\MagyarGravir.Shop.csproj",
+  "projectFilePath": "C:\\Visual Studio\\MagyarGravir_FullDesigner_Final\\MagyarGravir.Shop.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Péter\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\Péter\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\6.0.0\\microsoft.bcl.asyncinterfaces.6.0.0.nupkg.sha512",

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Visual Studio\\MagyarGravir\\MagyarGravir.Shop\\MagyarGravir.Shop\\MagyarGravir.Shop.csproj": {}
+    "C:\\Visual Studio\\MagyarGravir_FullDesigner_Final\\MagyarGravir.Shop.csproj": {}
   },
   "projects": {
-    "C:\\Visual Studio\\MagyarGravir\\MagyarGravir.Shop\\MagyarGravir.Shop\\MagyarGravir.Shop.csproj": {
+    "C:\\Visual Studio\\MagyarGravir_FullDesigner_Final\\MagyarGravir.Shop.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Visual Studio\\MagyarGravir\\MagyarGravir.Shop\\MagyarGravir.Shop\\MagyarGravir.Shop.csproj",
+        "projectUniqueName": "C:\\Visual Studio\\MagyarGravir_FullDesigner_Final\\MagyarGravir.Shop.csproj",
         "projectName": "MagyarGravir.Shop",
-        "projectPath": "C:\\Visual Studio\\MagyarGravir\\MagyarGravir.Shop\\MagyarGravir.Shop\\MagyarGravir.Shop.csproj",
+        "projectPath": "C:\\Visual Studio\\MagyarGravir_FullDesigner_Final\\MagyarGravir.Shop.csproj",
         "packagesPath": "C:\\Users\\Péter\\.nuget\\packages\\",
-        "outputPath": "C:\\Visual Studio\\MagyarGravir\\MagyarGravir.Shop\\MagyarGravir.Shop\\obj\\",
+        "outputPath": "C:\\Visual Studio\\MagyarGravir_FullDesigner_Final\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

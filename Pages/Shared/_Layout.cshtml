@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"] - Magyar Gravír</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body class="mg-body">
+    <header class="mg-header">
+        <div class="mg-header-inner">
+            <div class="mg-logo">
+                <div class="mg-logo-main">MAGYAR GRAVÍR</div>
+                <div class="mg-logo-sub">Egyedi gravírozott acél ajándékok</div>
+                <div class="mg-engrave-line"></div>
+            </div>
+            <nav class="mg-nav">
+                <a asp-page="/Index">Főoldal</a>
+                <a asp-page="/Shop/Category" asp-route-id="1">Kész termékek</a>
+                <a asp-page="/Shop/Category" asp-route-id="2">Egyedi pénzcsipeszek</a>
+                <a asp-page="/Shop/Cart">Kosár</a>
+                <a asp-page="/Admin/Login" class="mg-nav-admin">Admin</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="mg-main">
+        @RenderBody()
+    </main>
+
+    <footer class="mg-footer">
+        <div>© @DateTime.Now.Year Magyar Gravír – Egyedi pénzcsipeszek és ajándékok</div>
+        <div class="mg-footer-links">
+            <a href="/ASZF">Általános Szerződési Feltételek</a>
+            <span>•</span>
+            <a href="/Kapcsolat">Kapcsolat</a>
+        </div>
+    </footer>
+</body>
+</html>
