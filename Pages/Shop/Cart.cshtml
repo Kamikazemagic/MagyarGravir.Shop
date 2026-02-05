@@ -53,6 +53,33 @@
         .mennyiseg-gomb:hover {
             background-color: #ca8a04;
         }
+
+        a:link, a:visited {
+            color: white;
+            text-decoration-line: none;
+        }
+
+        a:active, a:hover {
+            color: #eab308;
+            text-decoration-line: none;
+        }
+
+        .cart-buttons {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between; /*az egyik gomb a balra, a másik a jobbra*/
+            align-items: center;
+        }
+
+        .btn-vasarlas, .btn-penztarhoz {
+            background: #222;
+            padding: 15px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+            border: 1px solid #333;
+        }
     </style>
 </head>
 
@@ -108,6 +135,12 @@
                 @Model.Cart.Sum(i => i.Price * i.Quantity) Ft
             </span>
         </p>
+
+                <!--kosár gombok (Vásárlás folytatása) és (Tovább a pénztárhoz)-->
+        <div class="cart-buttons">
+            <a href="/" class="btn-vasarlas">Vásárlás folytatása</a>
+            <a href="/Shop/Checkout" class="btn-penztarhoz">Tovább a pénztárhoz</a>
+        </div>
     }
 
 </body>
