@@ -37,6 +37,22 @@
         .price {
             color: #eab308;
         }
+
+                .mennyiseg-gomb {
+            width: 30px;        /* (+),(-)gombok fix szélessége */
+            height: 30px;       /* (+),(-)gombok fix magassága */
+            text-align: center;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #eab308;
+            border: none;
+            border-radius: 4px;
+            color: #111;
+        }
+
+        .mennyiseg-gomb:hover {
+            background-color: #ca8a04;
+        }
     </style>
 </head>
 
@@ -63,8 +79,25 @@
                 <tr>
                     <td><img src="@item.Image" /></td>
                     <td>@item.Name</td>
-                    <td>@item.Quantity</td>
-                    <td class="price">@item.Price Ft</td>
+                    <td>
+                        <!--a (-) gomb balra-->
+                        <form method="post" asp-page-handler="Decrease" style="display:inline-block">
+                            <input type="hidden" name="productId" value="@item.ProductId" />
+                            <button type="submit" class="mennyiseg-gomb">-</button>
+                        </form>
+
+                        <!--mennyiség középen-->
+                        <span style="padding:0 10px;">@item.Quantity</span>
+
+                        <!--a (+) gomb jobbra-->
+                        <form method="post" asp-page-handler="Increase" style="display:inline-block">
+                            <input type="hidden" name="productId" value="@item.ProductId" />
+                            <button type="submit" class="mennyiseg-gomb">+</button>
+                        </form>
+                    </td>
+
+                        <!--a mennyiségnek megfelelően kiszámolja a teljes árat a sor végén-->
+                    <td class="price">@(@item.Price * @item.Quantity) Ft</td>
                 </tr>
             }
         </table>
