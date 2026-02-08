@@ -2,32 +2,131 @@
 <html lang="hu">
 <head>
     <meta charset="utf-8" />
-    <title>@ViewData["Title"] - Magyar Gravír</title>
+    <title>@ViewData["Title"] - Magyar</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+    <style>
+        /* --- Felső header --- */
+        body {
+            background: #111;
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            padding: 18px 30px;
+            background:url('/logo-background.png') center/cover no-repeat;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-main {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo-sub {
+            font-size: 14px;
+            color: #ccc;
+        }
+
+        .engrave-line {
+            height: 2px;
+            background: #eab308;
+            margin-top: 4px;
+            width: 100%;
+        }
+
+        .nav a {
+            margin-left: 20px;
+            text-decoration: none;
+            color: #eab308;
+        }
+
+            .mg-nav a:hover {
+                color: white;
+            }
+
+        /* --- Második header --- */
+        .header {
+            display: flex;
+            justify-content: center; /* középre igazítja mindent */
+            align-items: center;
+            gap: 25px;
+        }
+
+            .header img {
+                height: 52px;
+                margin-left: auto; /* logó jobbra */
+            }
+
+        .menu a {
+            margin-right: 25px;
+            color: #eab308;
+            text-decoration: none;
+            font-size: 18px;
+            transition: 0.2s;
+        }
+
+            .menu a:hover {
+                color: white;
+                text-shadow: 0 0 10px #eab308;
+            }
+
+        /* Tartalom */
+        .mg-main {
+            padding: 30px;
+        }
+
+        /* Footer */
+        .mg-footer {
+            background: #222;
+            color: #ccc;
+            padding: 20px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .mg-footer-links a {
+            color: #eab308;
+            text-decoration: none;
+            margin: 0 5px;
+        }
+
+            .mg-footer-links a:hover {
+                color: white;
+            }
+      </style>
 </head>
-<body class="mg-body">
-    <header class="mg-header">
-        <div class="mg-header-inner">
-            <div class="mg-logo">
-                <div class="mg-logo-main">MAGYAR GRAVÍR</div>
-                <div class="mg-logo-sub">Egyedi gravírozott acél ajándékok</div>
-                <div class="mg-engrave-line"></div>
-            </div>
-            <nav class="mg-nav">
-                <a asp-page="/Index">Főoldal</a>
-                <a asp-page="/Shop/Category" asp-route-id="1">Kész termékek</a>
-                <a asp-page="/Shop/Category" asp-route-id="2">Egyedi pénzcsipeszek</a>
-                <a asp-page="/Shop/Cart">Kosár</a>
-                <a asp-page="/Admin/Login" class="mg-nav-admin">Admin</a>
-            </nav>
+<body>
+
+   
+
+    <!-- MÁSODIK KÉPES HEADER -->
+    <div class="header">
+        <div class="menu">
+            <a href="/">Főoldal</a>
+            <a href="/Shop/Category?id=1">Kategóriák</a>
+            <a href="/Shop/Cart">Kosár</a>
+            <a href="/Shop/Checkout">Rendelés</a>
         </div>
-    </header>
+        <img src="/Magyar-Gravir-logo.png" alt="" />
+    </div>
 
-    <main class="mg-main">
+    <!-- OLDAL TARTALMA -->
+    <div class="content">
         @RenderBody()
-    </main>
+    </div>
 
+    <!-- FOOTER -->
     <footer class="mg-footer">
         <div>© @DateTime.Now.Year Magyar Gravír – Egyedi pénzcsipeszek és ajándékok</div>
         <div class="mg-footer-links">
@@ -36,5 +135,6 @@
             <a href="/Kapcsolat">Kapcsolat</a>
         </div>
     </footer>
+
 </body>
 </html>
