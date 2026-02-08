@@ -18,6 +18,12 @@ namespace MagyarGravir.Shop.Pages.Shop
 
         public void OnGet()
         {
+            {
+                ViewData["Title"] = "Fõoldal";
+            }
+
+
+
             Categories = _db.Categories
                 .OrderBy(c => c.Id)
                 .ToList();

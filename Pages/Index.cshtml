@@ -1,8 +1,11 @@
 ﻿@page
 @model MagyarGravir.Shop.Pages.IndexModel
 @{
-    Layout = null;
+    Layout = "/Pages/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Főoldal";
 }
+
+
 
 <!DOCTYPE html>
 <html lang="hu">
@@ -23,8 +26,8 @@
             background: url('/header-big.png') center/cover no-repeat;
             height: 330px;
             display: flex;
-            justify-content: right;
-            align-items: end;
+            justify-content: center;
+            align-items: center;
             font-size: 48px;
             font-weight: bold;
             text-shadow: 0 0 20px #000;

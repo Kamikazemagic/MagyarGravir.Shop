@@ -2,10 +2,9 @@
 <html lang="hu">
 <head>
     <meta charset="utf-8" />
-    <title>@ViewData["Title"] - Magyar</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Magyar Gravír – @ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/site.css" />
 
     <style>
         /* --- Felső header --- */
@@ -19,7 +18,7 @@
 
         .header {
             padding: 18px 30px;
-            background:url('/logo-background.png') center/cover no-repeat;
+            background: url('/logo-background.png') center/cover no-repeat;
         }
 
         .header-inner {
@@ -51,9 +50,9 @@
             color: #eab308;
         }
 
-            .mg-nav a:hover {
-                color: white;
-            }
+        .mg-nav a:hover {
+            color: white;
+        }
 
         /* --- Második header --- */
         .header {
@@ -104,35 +103,43 @@
             .mg-footer-links a:hover {
                 color: white;
             }
-      </style>
+    </style>
 </head>
 <body>
 
-   
 
-    <!-- MÁSODIK KÉPES HEADER -->
-    <div class="header">
-        <div class="menu">
-            <a href="/">Főoldal</a>
-            <a href="/Shop/Category?id=1">Kategóriák</a>
-            <a href="/Shop/Cart">Kosár</a>
-            <a href="/Shop/Checkout">Rendelés</a>
+    @{
+        var currentPage = Context.GetRouteValue("page")?.ToString() ?? "/";
+    }
+
+    @if (currentPage != "/Index" && currentPage != "/")
+    {
+        <div class="header">
+            <div class="menu">
+                <a asp-page="/Index">Főoldal</a>
+                <a asp-page="/Shop/Category" asp-route-id="1">Kategóriák</a>
+                <a asp-page="/Shop/Cart">Kosár</a>
+                <a asp-page="/Shop/Checkout">Rendelés</a>
+            </div>
+
+            <img src="/Magyar-Gravir-logo.png" alt="" />
         </div>
-        <img src="/Magyar-Gravir-logo.png" alt="" />
-    </div>
+    }
+
+
 
     <!-- OLDAL TARTALMA -->
-    <div class="content">
+    <div class="content mg-main">
         @RenderBody()
     </div>
 
     <!-- FOOTER -->
     <footer class="mg-footer">
-        <div>© @DateTime.Now.Year Magyar Gravír – Egyedi pénzcsipeszek és ajándékok</div>
+        <div>© @DateTime.Now.Year - @ViewData["Title"] - Magyar Gravír</div>
         <div class="mg-footer-links">
-            <a href="/ASZF">Általános Szerződési Feltételek</a>
+            <a asp-page="/ASZF">Általános Szerződési Feltételek</a>
             <span>•</span>
-            <a href="/Kapcsolat">Kapcsolat</a>
+            <a asp-page="/Kapcsolat">Kapcsolat</a>
         </div>
     </footer>
 

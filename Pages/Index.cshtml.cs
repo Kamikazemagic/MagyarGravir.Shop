@@ -17,6 +17,9 @@ namespace MagyarGravir.Shop.Pages
         public List<Product> FeaturedProducts { get; set; } = new();
 
         public void OnGet()
+
+
+
         {
             Categories = _db.Categories
                 .OrderBy(c => c.Id)
