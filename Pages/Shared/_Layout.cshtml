@@ -1,3 +1,7 @@
+@* /Pages/Shared/_Layout.cshtml *@
+@{
+    var isHome = ViewData["Title"]?.ToString() == "Főoldal";
+}
 <!DOCTYPE html>
 <html lang="hu">
 <head>
@@ -5,133 +9,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Magyar Gravír – @ViewData["Title"]</title>
     <link rel="stylesheet" href="~/css/site.css" />
-
-    <style>
-        /* --- Felső header --- */
-        body {
-            background: #111;
-            color: white;
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-
-        .header {
-            padding: 18px 30px;
-            background: url('/logo-background.png') center/cover no-repeat;
-        }
-
-        .header-inner {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo-main {
-            font-size: 24px;
-            font-weight: bold;
-        }
-
-        .logo-sub {
-            font-size: 14px;
-            color: #ccc;
-        }
-
-        .engrave-line {
-            height: 2px;
-            background: #eab308;
-            margin-top: 4px;
-            width: 100%;
-        }
-
-        .nav a {
-            margin-left: 20px;
-            text-decoration: none;
-            color: #eab308;
-        }
-
-        .mg-nav a:hover {
-            color: white;
-        }
-
-        /* --- Második header --- */
-        .header {
-            display: flex;
-            justify-content: center; /* középre igazítja mindent */
-            align-items: center;
-            gap: 25px;
-        }
-
-            .header img {
-                height: 52px;
-                margin-left: auto; /* logó jobbra */
-            }
-
-        .menu a {
-            margin-right: 25px;
-            color: #eab308;
-            text-decoration: none;
-            font-size: 18px;
-            transition: 0.2s;
-        }
-
-            .menu a:hover {
-                color: white;
-                text-shadow: 0 0 10px #eab308;
-            }
-
-        /* Tartalom */
-        .mg-main {
-            padding: 30px;
-        }
-
-        /* Footer */
-        .mg-footer {
-            background: #222;
-            color: #ccc;
-            padding: 20px;
-            text-align: center;
-            font-size: 14px;
-        }
-
-        .mg-footer-links a {
-            color: #eab308;
-            text-decoration: none;
-            margin: 0 5px;
-        }
-
-            .mg-footer-links a:hover {
-                color: white;
-            }
-    </style>
 </head>
-<body>
+<body class="mg-body">
 
+    <!-- HEADER -->
+    <header class="mg-header @(isHome ? "mg-header-home" : "")">
+        <div class="mg-header-inner">
+            <div class="mg-logo">
+                <div class="mg-logo-main">Magyar Gravír</div>
+                <div class="mg-logo-sub">Egyedi gravírozott ajándékok</div>
+                <div class="mg-engrave-line"></div>
+            </div>
 
-    @{
-        var currentPage = Context.GetRouteValue("page")?.ToString() ?? "/";
-    }
-
-    @if (currentPage != "/Index" && currentPage != "/")
-    {
-        <div class="header">
-            <div class="menu">
+            <nav class="mg-nav">
                 <a asp-page="/Index">Főoldal</a>
                 <a asp-page="/Shop/Category" asp-route-id="1">Kategóriák</a>
                 <a asp-page="/Shop/Cart">Kosár</a>
                 <a asp-page="/Shop/Checkout">Rendelés</a>
-            </div>
-
-            <img src="/Magyar-Gravir-logo.png" alt="" />
+            </nav>
         </div>
-    }
-
-
+    </header>
 
     <!-- OLDAL TARTALMA -->
-    <div class="content mg-main">
+    <main class="mg-main">
         @RenderBody()
-    </div>
+    </main>
 
     <!-- FOOTER -->
     <footer class="mg-footer">
