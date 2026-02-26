@@ -17,6 +17,7 @@ namespace MagyarGravir.Shop.Pages.Admin.Orders
 
         public Order? Order { get; set; }
 
+        // Lekérjük a rendelést a részletekhez
         public async Task<IActionResult> OnGetAsync(int id)
         {
             Order = await _db.Orders
@@ -24,21 +25,29 @@ namespace MagyarGravir.Shop.Pages.Admin.Orders
                 .FirstOrDefaultAsync(o => o.Id == id);
 
             if (Order == null)
-                return RedirectToPage("Index");
+                return RedirectToPage("./Index");
 
             return Page();
         }
 
+        // Teljesítés = fizikai törlés
         public async Task<IActionResult> OnPostCompleteAsync(int id)
         {
-            var order = await _db.Orders.FindAsync(id);
-            if (order == null)
-                return RedirectToPage("Index");
+            var order = await _db.Orders
+                .Include(o => o.Items)
+                .FirstOrDefaultAsync(o => o.Id == id);
 
-            order.IsCompleted = true;
+            if (order == null)
+                return RedirectToPage("./Index");
+
+            _db.Orders.Remove(order);
             await _db.SaveChangesAsync();
 
-            return RedirectToPage("Details", new { id });
+            // TempData-ban üzenet
+            TempData["SuccessMessage"] = $"A rendelés #{order.Id} teljesítve és törölve lett.";
+
+            // Vissza a listaoldalra
+            return RedirectToPage("./Index");
         }
     }
 }

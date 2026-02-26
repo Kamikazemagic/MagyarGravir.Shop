@@ -50,7 +50,7 @@ namespace MagyarGravir.Shop.Pages.Admin.Products
             _db.Products.Remove(product);
             await _db.SaveChangesAsync();
 
-            return RedirectToPage("/Admin/Products/Index");
+            return RedirectToPage("/Index");
         }
     }
 }

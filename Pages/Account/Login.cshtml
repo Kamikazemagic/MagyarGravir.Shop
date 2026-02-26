@@ -1,0 +1,22 @@
+﻿@page
+@model MagyarGravir.Shop.Pages.Account.LoginModel
+
+    <div class="login-card">
+        <h2>Bejelentkezés</h2>
+
+        <form method="post">
+            <input asp-for="Username" placeholder="Felhasználónév" required />
+            <input asp-for="Password" placeholder="Jelszó" type="password" required />
+            <button type="submit">Bejelentkezés</button>
+        </form>
+
+        @if (TempData["Error"] != null)
+        {
+            <p class="text-danger">@TempData["Error"]</p>
+        }
+        @if (TempData["Message"] != null)
+        {
+            <p class="text-success">@TempData["Message"]</p>
+        }
+</div>
+<link rel="stylesheet" href="~/css/login.css" />

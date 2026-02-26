@@ -59,7 +59,7 @@ namespace MagyarGravir.Shop.Pages.Admin.Products
             _db.Products.Add(NewProduct);
             await _db.SaveChangesAsync();
 
-            return RedirectToPage("/Admin/Products/Index");
+            return RedirectToPage("/Index");
         }
     }
 }

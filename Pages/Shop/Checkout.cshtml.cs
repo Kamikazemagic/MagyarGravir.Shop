@@ -31,19 +31,32 @@ namespace MagyarGravir.Shop.Pages.Shop
 
         public void OnGet()
         {
-            Cart = HttpContext.Session.GetObject<List<CartItem>>("cart")
-                   ?? new List<CartItem>();
+            // Kosár betöltése sessionbõl
+            Cart = HttpContext.Session.GetObject<List<CartItem>>("cart") ?? new List<CartItem>();
+
+            // Ha a felhasználó be van jelentkezve, adatok automatikus kitöltése
+            var userId = HttpContext.Session.GetInt32("UserId");
+            if (userId.HasValue)
+            {
+                var user = _db.Users.FirstOrDefault(u => u.Id == userId.Value);
+                if (user != null)
+                {
+                    CustomerName = user.Username;
+                    Email = user.Email;
+                    Address = $"{user.ZipCode}, {user.City}, {user.Street}";
+                }
+            }
         }
 
         public IActionResult OnPost()
         {
-            Cart = HttpContext.Session.GetObject<List<CartItem>>("cart")
-                   ?? new List<CartItem>();
+            // Kosár betöltése sessionbõl
+            Cart = HttpContext.Session.GetObject<List<CartItem>>("cart") ?? new List<CartItem>();
 
             if (Cart.Count == 0)
                 return RedirectToPage("/Shop/Cart");
 
-            // rendelés létrehozása
+            // Rendelés létrehozása
             var order = new Order
             {
                 CustomerName = CustomerName,
@@ -62,10 +75,10 @@ namespace MagyarGravir.Shop.Pages.Shop
             _db.Orders.Add(order);
             _db.SaveChanges();
 
-            // kosár ürítése
+            // Kosár törlése a sessionbõl
             HttpContext.Session.Remove("cart");
 
-            // redirect a köszönõoldalra
+            // Átirányítás a köszönõoldalra
             return RedirectToPage("/Shop/Success", new { id = order.Id });
         }
     }

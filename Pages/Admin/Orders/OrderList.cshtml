@@ -61,6 +61,25 @@
             <th>Művelet</th>
         </tr>
 
+
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <div class="alert-success">
+                @TempData["SuccessMessage"]
+            </div>
+        }
+
+        <style>
+            .alert-success {
+                background-color: #4ade80;
+                color: black;
+                padding: 10px 15px;
+                border-radius: 6px;
+                margin-bottom: 20px;
+                font-weight: bold;
+            }
+        </style>
+
         @foreach (var o in Model.Orders)
         {
             <tr>

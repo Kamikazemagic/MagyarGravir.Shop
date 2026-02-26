@@ -6,11 +6,9 @@
 
 
 <!DOCTYPE html>
-<html>
+
 <head>
     <meta charset="utf-8" />
-<a href="c:\projektek\magyargravir\pages\admin\orders\details.cshtml.cs">c:\projektek\magyargravir\pages\admin\orders\details.cshtml.cs</a>
-<a href="c:\projektek\magyargravir\pages\admin\orders\details.cshtml">c:\projektek\magyargravir\pages\admin\orders\details.cshtml</a>
     <title>Rendelés részletei – Admin</title>
 
     <style>
@@ -54,12 +52,12 @@
     </style>
 </head>
 
-<body>
+
 
     <h1>Rendelés #@Model.Order?.Id</h1>
 
-    @if (Model.Order != null)
-    {
+@if (Model.Order != null)
+{
         <h3>Vevő adatai</h3>
         <p><b>Név:</b> @Model.Order.CustomerName</p>
         <p><b>Email:</b> @Model.Order.Email</p>
@@ -74,13 +72,12 @@
                 <th>Mennyiség</th>
                 <th>Ár</th>
             </tr>
-
             @foreach (var i in Model.Order.Items)
             {
                 <tr>
                     <td>@i.ProductName</td>
                     <td>@i.Quantity</td>
-                    <td class="price">@i.UnitPrice Ft</td>
+                    <td>@i.UnitPrice Ft</td>
                 </tr>
             }
         </table>
@@ -92,17 +89,7 @@
             </span>
         </h3>
 
-        @if (!Model.Order.IsCompleted)
-        {
-            <form method="post" asp-page-handler="Complete">
-                <button type="submit">Rendelés teljesítve</button>
-            </form>
-        }
-        else
-        {
-            <p class="done">A rendelés teljesítve ✔</p>
-        }
-    }
-
-</body>
-</html>
+        <form method="post" asp-page-handler="post">
+            <button type="submit">Rendelés teljesítve</button>
+        </form>
+}

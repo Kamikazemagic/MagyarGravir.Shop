@@ -1,6 +1,8 @@
 @* /Pages/Shared/_Layout.cshtml *@
+@using Microsoft.AspNetCore.Http
 @{
     var isHome = ViewData["Title"]?.ToString() == "Főoldal";
+    var username = Context.Session.GetString("Username");
 }
 <!DOCTYPE html>
 <html lang="hu">
@@ -26,6 +28,20 @@
                 <a asp-page="/Shop/Category" asp-route-id="1">Kategóriák</a>
                 <a asp-page="/Shop/Cart">Kosár</a>
                 <a asp-page="/Shop/Checkout">Rendelés</a>
+
+                <!-- Bejelentkezés / Regisztráció vagy Üdv, Username -->
+                <span class="mg-nav-auth">
+                    @if (string.IsNullOrEmpty(username))
+                    {
+                        <a asp-page="/Account/Login" class="mg-btn-login">Bejelentkezés</a>
+                        <a asp-page="/Account/Register" class="mg-btn-register">Regisztráció</a>
+                    }
+                    else
+                    {
+                        <span class="mg-username">Üdv, @username!</span>
+                        <a asp-page="/Account/Logout" class="mg-btn-logout">Kijelentkezés</a>
+                    }
+                </span>
             </nav>
         </div>
     </header>
