@@ -58,21 +58,20 @@ body.mg-body {
     width: 180px;
     height: 3px;
     border-radius: 999px;
-    background: linear-gradient(
-        120deg,
-        rgba(15,23,42,0.4),
-        #fde68a,
-        #facc15,
-        rgba(15,23,42,0.4)
-    );
+    background: linear-gradient( 120deg, rgba(15,23,42,0.4), #fde68a, #facc15, rgba(15,23,42,0.4) );
     background-size: 240% 100%;
     animation: engrave-move 2.2s linear infinite;
     box-shadow: 0 0 20px rgba(250,204,21,0.55);
 }
 
 @keyframes engrave-move {
-    0% { background-position: 240% 0; }
-    100% { background-position: 0 0; }
+    0% {
+        background-position: 240% 0;
+    }
+
+    100% {
+        background-position: 0 0;
+    }
 }
 
 /* NAV */
