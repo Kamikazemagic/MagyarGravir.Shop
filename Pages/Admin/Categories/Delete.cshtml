@@ -1,0 +1,37 @@
+﻿@page
+@model MagyarGravir.Shop.Pages.Admin.Categories.DeleteModel
+@{
+    Layout = "/Pages/Admin/_AdminLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+</head>
+
+<body style="background:#111;color:white;font-family:Arial;padding:30px;">
+
+    <h1>Kategória törlése</h1>
+
+    @if (Model.CategoryToDelete != null)
+    {
+        <p style="color:#ef4444;font-weight:bold;">
+            Biztosan törölni szeretnéd a következő kategóriát?
+        </p>
+
+        <p><strong>Név:</strong> @Model.CategoryToDelete.Name</p>
+        <p><strong>Egyedi kategória?</strong> @(Model.CategoryToDelete.IsCustom ? "Igen" : "Nem")</p>
+
+        <form method="post">
+            <button style="padding:10px;background:#ef4444;color:white;border:none;border-radius:6px;">
+                Igen, törlöm
+            </button>
+        </form>
+
+        <br />
+        <a href="/Admin/Categories" style="color:#eab308;">← Mégse</a>
+    }
+
+</body>
+</html>

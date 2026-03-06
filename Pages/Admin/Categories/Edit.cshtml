@@ -1,0 +1,39 @@
+﻿@page
+@model MagyarGravir.Shop.Pages.Admin.Categories.EditModel
+@{
+    Layout = "/Pages/Admin/_AdminLayout.cshtml";
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Kategória szerkesztése</title>
+</head>
+<body style="background:#111;color:white;font-family:Arial;padding:30px;">
+
+    <h1>Kategória szerkesztése</h1>
+
+    <form method="post">
+        <input type="hidden" asp-for="EditCategory.Id" />
+
+        <label>
+            Kategória neve:
+            <input asp-for="EditCategory.Name" />
+        </label>
+
+        <label>
+            Egyedi kategória?
+            <input asp-for="EditCategory.IsCustom" type="checkbox" />
+        </label>
+
+        <button style="margin-top:20px;padding:10px;background:#eab308;border:none;border-radius:6px;cursor:pointer;">
+            Mentés
+        </button>
+    </form>
+
+    <a href="/Admin/Categories" style="color:#eab308;">← Vissza</a>
+
+</body>
+</html>

@@ -1,0 +1,68 @@
+﻿@page
+@model MagyarGravir.Shop.Pages.Admin.Categories.CreateModel
+@{
+    Layout = "/Pages/Admin/_AdminLayout.cshtml";
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Új kategória</title>
+
+    <style>
+        body {
+            background: #111;
+            color: white;
+            font-family: Arial;
+            padding: 30px;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+        }
+
+        input {
+            width: 300px;
+            padding: 8px;
+            border-radius: 6px;
+            border: none;
+            margin-top: 5px;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 18px;
+            background: #eab308;
+            color: black;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Új kategória létrehozása</h1>
+
+    <form method="post">
+        <label>
+            Kategória neve:
+            <input asp-for="NewCategory.Name" />
+        </label>
+
+        <label>
+            Egyedi kategória?
+            <input asp-for="NewCategory.IsCustom" type="checkbox" />
+        </label>
+
+        <button type="submit">Mentés</button>
+    </form>
+
+    <a href="/Admin/Categories">← Vissza</a>
+
+</body>
+</html>

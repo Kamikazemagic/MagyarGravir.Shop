@@ -1,0 +1,43 @@
+﻿.mg-main {
+    background: #111; /* a tartalom háttér */
+    color: white;
+    padding: 20px;
+}
+
+h1 {
+    color: #eab308;
+}
+
+.products {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.product-card {
+    background: #1b1b1b;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #333;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+}
+
+    .product-card img {
+        width: 100%;
+        max-height: 180px;
+        object-fit: cover;
+        border-radius: 6px;
+    }
+
+.name {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.price {
+    color: #eab308;
+    margin-top: 5px;
+}

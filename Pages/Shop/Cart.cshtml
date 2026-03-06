@@ -1,0 +1,80 @@
+﻿@page
+@model MagyarGravir.Shop.Pages.Shop.CartModel
+@{
+    Layout = "/Pages/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Kosár"; // ← ez adja a böngészőfül címét
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Kosár – Magyar Gravír</title>
+
+    <link rel="stylesheet" href="~/css/cart.css" />
+
+</head>
+
+
+<body>
+
+    <h1>Kosár</h1>
+
+    @if (Model.Cart.Count == 0)
+    {
+        <p>A kosár üres.</p>
+    }
+    else
+    {
+        <table>
+            <tr>
+                <th>Kép</th>
+                <th>Termék</th>
+                <th>Db</th>
+                <th>Ár</th>
+            </tr>
+
+            @foreach (var item in Model.Cart)
+            {
+                <tr>
+                    <td><img src="@item.Image" /></td>
+                    <td>@item.Name</td>
+                    <td>
+                        <!--a (-) gomb balra-->
+                        <form method="post" asp-page-handler="Decrease" style="display:inline-block">
+                            <input type="hidden" name="productId" value="@item.ProductId" />
+                            <button type="submit" class="mennyiseg-gomb">-</button>
+                        </form>
+
+                        <!--mennyiség középen-->
+                        <span style="padding:0 10px;">@item.Quantity</span>
+
+                        <!--a (+) gomb jobbra-->
+                        <form method="post" asp-page-handler="Increase" style="display:inline-block">
+                            <input type="hidden" name="productId" value="@item.ProductId" />
+                            <button type="submit" class="mennyiseg-gomb">+</button>
+                        </form>
+                    </td>
+
+                        <!--a mennyiségnek megfelelően kiszámolja a teljes árat a sor végén-->
+                    <td class="price">@(@item.Price * @item.Quantity) Ft</td>
+                </tr>
+            }
+        </table>
+
+        <p style="margin-top:20px; font-size:20px;">
+            Összesen:
+            <span class="price">
+                @Model.Cart.Sum(i => i.Price * i.Quantity) Ft
+            </span>
+        </p>
+
+                <!--kosár gombok (Vásárlás folytatása) és (Tovább a pénztárhoz)-->
+        <div class="cart-buttons">
+            <a href="/" class="btn-vasarlas">Vásárlás folytatása</a>
+            <a href="/Shop/Checkout" class="btn-penztarhoz">Tovább a pénztárhoz</a>
+        </div>
+    }
+
+</body>
+</html>
