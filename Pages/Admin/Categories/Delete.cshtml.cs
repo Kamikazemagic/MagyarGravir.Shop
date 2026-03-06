@@ -20,7 +20,11 @@ namespace MagyarGravir.Shop.Pages.Admin.Categories
         {
             CategoryToDelete = await _db.Categories.FindAsync(id);
             if (CategoryToDelete == null)
+<<<<<<< HEAD
                 return RedirectToPage("/Admin/Categories/CategoryList");
+=======
+                return RedirectToPage("/Admin/Categories/Index");
+>>>>>>> 259008b110d4a5a7f5238371c8b31c6558ccf735
 
             return Page();
         }
@@ -34,7 +38,11 @@ namespace MagyarGravir.Shop.Pages.Admin.Categories
                 await _db.SaveChangesAsync();
             }
 
+<<<<<<< HEAD
             return RedirectToPage("/Admin/Categories/CategoryList");
+=======
+            return RedirectToPage("/Admin/Categories/Index");
+>>>>>>> 259008b110d4a5a7f5238371c8b31c6558ccf735
         }
     }
 }
