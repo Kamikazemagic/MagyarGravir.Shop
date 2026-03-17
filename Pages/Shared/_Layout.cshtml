@@ -11,6 +11,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Magyar Gravír – @ViewData["Title"]</title>
     <link rel="stylesheet" href="~/css/site.css" />
+    <!-- az alábbi sor felel azért, hogy az adott oldalhoz tartozó CSS töltődjön be -->
+    @RenderSection("Styles", required: false) 
 </head>
 <body class="mg-body">
 

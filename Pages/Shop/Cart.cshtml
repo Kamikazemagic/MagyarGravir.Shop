@@ -5,20 +5,11 @@
     ViewData["Title"] = "Kosár"; // ← ez adja a böngészőfül címét
 }
 
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <title>Kosár – Magyar Gravír</title>
+@section Styles {
+    <link rel="stylesheet" href="~/css/cart.css"/>
+}
 
-    <link rel="stylesheet" href="~/css/cart.css" />
-
-</head>
-
-
-<body>
-
-    <h1>Kosár</h1>
+<h1>Kosár</h1>
 
     @if (Model.Cart.Count == 0)
     {
@@ -75,6 +66,3 @@
             <a href="/Shop/Checkout" class="btn-penztarhoz">Tovább a pénztárhoz</a>
         </div>
     }
-
-</body>
-</html>
