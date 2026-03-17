@@ -5,15 +5,9 @@
     ViewData["Title"] = "Termékek";
 }
 
-<!DOCTYPE html>
-<html lang="hu">
-<head>
-    <meta charset="utf-8" />
-    <title>@Model.CurrentProduct?.Name – Magyar Gravír</title>
-    <link rel="stylesheet" href="~/css/product.css">
-</head>
-
-<body>
+@section Styles {
+    <link rel="stylesheet" href="~/css/product.css" />
+}
 
     @if (Model.CurrentProduct != null)
     {
@@ -43,6 +37,3 @@
             </div>
         </div>
     }
-
-</body>
-</html>
