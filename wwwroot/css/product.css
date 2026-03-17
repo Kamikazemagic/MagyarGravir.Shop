@@ -1,0 +1,53 @@
+﻿body {
+    background: #111;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.image-wrapper img {
+    width: 400px;
+    max-width: 100%;
+    border-radius: 8px;
+    border: 2px solid #333;
+}
+
+.details {
+    max-width: 500px;
+}
+
+.price {
+    font-size: 26px;
+    color: #eab308;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.category {
+    margin-top: 8px;
+    color: #ccc;
+}
+
+.desc {
+    margin-top: 20px;
+    line-height: 1.4;
+}
+
+button {
+    margin-top: 25px;
+    padding: 12px 22px;
+    background: #eab308;
+    color: black;
+    border: none;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+}
