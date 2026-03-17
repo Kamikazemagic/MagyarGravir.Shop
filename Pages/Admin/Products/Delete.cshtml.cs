@@ -50,11 +50,7 @@ namespace MagyarGravir.Shop.Pages.Admin.Products
             _db.Products.Remove(product);
             await _db.SaveChangesAsync();
 
-<<<<<<< HEAD
             return RedirectToPage("/Admin/Products/ProductList"); //ide ugrik törlés után
-=======
-            return RedirectToPage("/Index");
->>>>>>> 259008b110d4a5a7f5238371c8b31c6558ccf735
         }
     }
 }
