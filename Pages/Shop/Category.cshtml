@@ -6,41 +6,22 @@
 
 }
 
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
+<h1>@Model.CurrentCategory?.Name</h1>
 
-    <title>@Model.CurrentCategory?.Name – Magyar Gravír</title>
-
-    <link rel="stylesheet" href="~/css/site.css" />
-
-</head>
-
-<body>
-
-    <h1>@Model.CurrentCategory?.Name</h1>
-
-    @if (Model.Products.Count == 0)
-    {
-        <p>Nincs megjeleníthető termék ebben a kategóriában.</p>
-    }
-    else
-    {
-        <div class="products">
-            @foreach (var p in Model.Products)
-            {
-                <a href="/Shop/Product?id=@p.Id"
-                   class="product-card"
-                   target="_blank"
-                   rel="noopener noreferrer">
-                    <img src="@p.MainImagePath" alt="@p.Name" />
-                    <div class="name">@p.Name</div>
-                    <div class="price">@p.Price Ft</div>
-                </a>
-            }
-        </div>
-    }
-
-</body>
-</html>
+@if (Model.Products.Count == 0)
+{
+    <p>Nincs megjeleníthető termék ebben a kategóriában.</p>
+}
+else
+{
+    <div class="products">
+        @foreach (var p in Model.Products)
+        {
+            <a href="/Shop/Product?id=@p.Id" class="product-card" target="_blank" rel="noopener noreferrer">
+            <img src="@p.MainImagePath" alt="@p.Name" />
+            <div class="name">@p.Name</div>
+            <div class="price">@p.Price Ft</div>
+            </a>
+        }
+    </div>
+}
