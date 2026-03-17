@@ -2,19 +2,12 @@
 @model MagyarGravir.Shop.Pages.Shop.CheckoutModel
 @{
     Layout = "/Pages/Shared/_Layout.cshtml";
-    ViewData["Title"] = "Rendelések";
+    ViewData["Title"] = "Pénztár";
 }
 
-<!DOCTYPE html>
-<html lang="hu">
-<head>
-    <meta charset="utf-8" />
-    <title>Rendelés – Magyar Gravír</title>
-
-    <link rel="stylesheet" href="~/css/Checkout.css" />
-</head>
-
-<body>
+@section Styles {
+    <link rel="stylesheet" href="~/css/checkout.css"/>
+}
 
     <h1>Rendelés leadása</h1>
 
@@ -55,6 +48,3 @@
             <button type="submit">Rendelés elküldése</button>
         </form>
     }
-
-</body>
-</html>
