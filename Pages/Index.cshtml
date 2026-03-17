@@ -11,8 +11,8 @@
         <h1 class="mg-hero-title">Egyedi gravírozott ajándékok</h1>
         <p class="mg-hero-sub">Fedezd fel a legkülönlegesebb gravírozott termékeinket, minden alkalomra.</p>
         <div class="mg-hero-buttons">
-            <a class="mg-btn-primary" href="/Shop/Category?id=1">Vásárlás</a>
-            <a class="mg-btn-outline" href="/Kapcsolat">Kapcsolat</a>
+            <a class="mg-btn-primary" href="/Shop/Category?id=1" target="_blank">Vásárlás</a>
+            <a class="mg-btn-outline" href="/Kapcsolat" target="_blank">Kapcsolat</a>
         </div>
     </div>
 </div>
@@ -25,7 +25,7 @@
     <div class="mg-category-list">
         @foreach (var c in Model.Categories)
         {
-            <a class="mg-category-pill" href="/Shop/Category?id=@c.Id">@c.Name</a>
+            <a class="mg-category-pill" href="/Shop/Category?id=@c.Id" target="_blank">@c.Name</a>
         }
     </div>
 </section>
@@ -38,7 +38,7 @@
     <div class="mg-product-grid">
         @foreach (var p in Model.FeaturedProducts)
         {
-            <a class="mg-product-card" href="/Shop/Product?id=@p.Id">
+            <a class="mg-product-card" href="/Shop/Product?id=@p.Id" target="_blank">
                 <div class="mg-product-img">
                     <img src="@p.MainImagePath" alt="@p.Name" />
                 </div>
