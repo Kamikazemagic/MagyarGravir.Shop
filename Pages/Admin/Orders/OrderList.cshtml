@@ -1,55 +1,10 @@
 ﻿@page "/Admin/Orders"
 @model MagyarGravir.Shop.Pages.Admin.Orders.OrderListModel
 @{
-    Layout = "/Pages/Admin/_AdminLayout.cshtml";
+    ViewData["Title"] = "Admin - Rendelések";
 }
 
-
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <title>Rendelések – Admin</title>
-
-    <style>
-        body {
-            background: #111;
-            color: white;
-            font-family: Poppins;
-            padding: 20px;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-
-        td, th {
-            padding: 10px;
-            border-bottom: 1px solid #333;
-        }
-
-        a {
-            color: #eab308;
-            text-decoration: none;
-        }
-
-        .done {
-            color: #4ade80;
-            font-weight: bold;
-        }
-
-        .pending {
-            color: #f87171;
-            font-weight: bold;
-        }
-    </style>
-</head>
-
-<body>
-
-    <h1>Rendelések</h1>
+<h1>Rendelések</h1>
 
     <table>
         <tr>
@@ -68,17 +23,6 @@
                 @TempData["SuccessMessage"]
             </div>
         }
-
-        <style>
-            .alert-success {
-                background-color: #4ade80;
-                color: black;
-                padding: 10px 15px;
-                border-radius: 6px;
-                margin-bottom: 20px;
-                font-weight: bold;
-            }
-        </style>
 
         @foreach (var o in Model.Orders)
         {
@@ -103,6 +47,3 @@
             </tr>
         }
     </table>
-
-</body>
-</html>

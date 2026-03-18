@@ -1,66 +1,11 @@
 ﻿@page
 @model MagyarGravir.Shop.Pages.Admin.Products.EditModel
 @{
-    Layout = "/Pages/Admin/_AdminLayout.cshtml";
+    ViewData["Title"] = "Admin - Termék szerkesztés";
 }
 
 
-<!DOCTYPE html>
-<html lang="hu">
-<head>
-    <meta charset="utf-8" />
-    <title>Termék szerkesztése – Admin</title>
-
-    <style>
-        body {
-            background: #111;
-            color: white;
-            font-family: Poppins;
-            padding: 30px;
-        }
-
-        label {
-            display: block;
-            margin-top: 15px;
-        }
-
-        input, select, textarea {
-            width: 300px;
-            margin-top: 5px;
-            padding: 8px;
-            border-radius: 6px;
-            border: none;
-        }
-
-        .current-image {
-            margin-top: 10px;
-        }
-
-        img {
-            border: 2px solid #333;
-            margin-bottom: 10px;
-        }
-
-        button {
-            margin-top: 20px;
-            padding: 10px 18px;
-            font-size: 16px;
-            font-weight: bold;
-            background: #eab308;
-            color: black;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-        }
-
-        a {
-            color: #eab308;
-        }
-    </style>
-</head>
-<body>
-
-    <h1>Termék szerkesztése</h1>
+<h1>Termék szerkesztése</h1>
 
     <form method="post" enctype="multipart/form-data">
         <input type="hidden" asp-for="EditProduct.Id" />
@@ -120,6 +65,3 @@
 
     <br />
     <a href="/Admin/Products">← Vissza a listához</a>
-
-</body>
-</html>
