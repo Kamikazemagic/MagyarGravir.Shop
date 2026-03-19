@@ -1,73 +1,18 @@
 ﻿@page
 @model MagyarGravir.Shop.Pages.Admin.LoginModel
 @{
-    Layout = null;
+    ViewData["Title"] = "Admin belépés";
 }
 
-<!DOCTYPE html>
-<html lang="hu">
-<head>
-    <meta charset="utf-8" />
-    <title>Admin belépés – Magyar Gravír</title>
-
-    <style>
-        body {
-            background: #111;
-            font-family: Poppins;
-            display: flex;
-            height: 100vh;
-            justify-content: center;
-            align-items: center;
-            color: white;
-        }
-
-        .login-box {
-            background: #1c1c1c;
-            padding: 30px;
-            border-radius: 10px;
-            width: 350px;
-            box-shadow: 0 0 20px #444;
-        }
-
-        input {
-            width: 100%;
-            padding: 10px;
-            margin-top: 10px;
-            border-radius: 6px;
-            border: none;
-            font-size: 16px;
-        }
-
-        button {
-            margin-top: 15px;
-            width: 100%;
-            padding: 10px;
-            background: #eab308;
-            border: none;
-            color: black;
-            font-weight: bold;
-            border-radius: 6px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-
-        .error {
-            color: #ff6b6b;
-            margin-top: 10px;
-            text-align: center;
-        }
-    </style>
-</head>
-<body>
-
+<div class"login-body">
     <div class="login-box">
         <h2>Admin belépés</h2>
 
         <form method="post">
-            <input asp-for="Username" placeholder="Felhasználónév" />
-            <input asp-for="Password" type="password" placeholder="Jelszó" />
+            <input asp-for="Username" class="login-input" placeholder="Felhasználónév" />
+            <input asp-for="Password" type="password" class="login-input" placeholder="Jelszó" />
 
-            <button type="submit">Belépés</button>
+            <button type="submit" class="login-btn">Belépés</button>
 
             @if (!string.IsNullOrEmpty(Model.ErrorMessage))
             {
@@ -75,6 +20,4 @@
             }
         </form>
     </div>
-
-</body>
-</html>
+</div>

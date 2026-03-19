@@ -8,7 +8,7 @@
 
     @if (Model.CategoryToDelete != null)
     {
-        <p style="color:#ef4444;font-weight:bold;">
+        <p class="warning">
             Biztosan törölni szeretnéd a következő kategóriát?
         </p>
 
@@ -16,11 +16,8 @@
         <p><strong>Egyedi kategória?</strong> @(Model.CategoryToDelete.IsCustom ? "Igen" : "Nem")</p>
 
         <form method="post">
-            <button style="padding:10px;background:#ef4444;color:white;">
-                Igen, törlöm
-            </button>
+            <button class="warning-btn">Igen, törlöm</button>
         </form>
 
-        <br />
-        <a href="/Admin/Categories" style="color:#eab308;">← Mégse</a>
+        <a href="/Admin/Categories" class="back">← Mégse</a>
     }
