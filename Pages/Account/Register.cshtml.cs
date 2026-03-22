@@ -21,28 +21,45 @@ namespace MagyarGravir.Shop.Pages.Account
         [BindProperty] public string Password { get; set; } = string.Empty;
         [BindProperty] public string ConfirmPassword { get; set; } = string.Empty;
 
-        public void OnGet() { }
+        public void OnGet()
+        {
+            // Oldal betöltésekor minden mező üres legyen
+            Username = string.Empty;
+            Email = string.Empty;
+            ZipCode = string.Empty;
+            City = string.Empty;
+            Street = string.Empty;
+            Password = string.Empty;
+            ConfirmPassword = string.Empty;
+        }
 
         public IActionResult OnPost()
         {
+            // Jelszó egyezés ellenőrzése
             if (Password != ConfirmPassword)
             {
                 TempData["Error"] = "A jelszavak nem egyeznek!";
+                ClearFields();
                 return Page();
             }
 
-            if (_db.Users.Any(u => u.Username == Username))
+            // Felhasználónév foglalt vagy tiltott ellenőrzése
+            if (_db.Users.Any(u => u.Username.ToLower() == Username.ToLower()) || Username.ToLower() == "admin")
             {
-                TempData["Error"] = "Ez a felhasználónév már foglalt!";
+                TempData["Error"] = "Ez a felhasználónév nem használható!";
+                ClearFields();
                 return Page();
             }
 
-            if (_db.Users.Any(u => u.Email == Email))
+            // Email foglalt ellenőrzése
+            if (_db.Users.Any(u => u.Email.ToLower() == Email.ToLower()))
             {
                 TempData["Error"] = "Ez az email cím már regisztrálva van!";
+                ClearFields();
                 return Page();
             }
 
+            // Új felhasználó létrehozása
             var user = new User
             {
                 Username = Username,
@@ -59,9 +76,8 @@ namespace MagyarGravir.Shop.Pages.Account
             _db.Users.Add(user);
             _db.SaveChanges(); // user.Id létrejön
 
-            // === Session kosár mentése a felhasználóhoz ===
+            // Session kosár mentése
             var sessionCart = HttpContext.Session.GetObject<List<CartItem>>("cart") ?? new List<CartItem>();
-
             foreach (var item in sessionCart)
             {
                 _db.CartItems.Add(new CartItem
@@ -71,14 +87,23 @@ namespace MagyarGravir.Shop.Pages.Account
                     UserId = user.Id
                 });
             }
-
             _db.SaveChanges();
-
-            // Session törlése, mert a kosár már az adatbázisban van
             HttpContext.Session.Remove("cart");
 
             TempData["Message"] = "Sikeres regisztráció! Most bejelentkezhet.";
             return RedirectToPage("/Account/Login");
+        }
+
+        private void ClearFields()
+        {
+            // Hibánál minden mező törlése
+            Username = string.Empty;
+            Email = string.Empty;
+            ZipCode = string.Empty;
+            City = string.Empty;
+            Street = string.Empty;
+            Password = string.Empty;
+            ConfirmPassword = string.Empty;
         }
     }
 }
