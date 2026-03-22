@@ -1,0 +1,34 @@
+﻿@page
+@model MagyarGravir.Shop.Pages.Admin.LoginModel
+@{
+    Layout = null;
+    ViewData["Title"] = "Admin belépés";
+}
+
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="~/css/admin_login.css" />
+</head>
+<body>
+
+    <div class="login-box">
+        <h2>Admin belépés</h2>
+
+        <form method="post">
+            <input asp-for="Username" class="login-input" placeholder="Felhasználónév" />
+            <input asp-for="Password" type="password" class="login-input" placeholder="Jelszó" />
+
+            <button type="submit" class="login-btn">Belépés</button>
+
+            @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+            {
+                <div class="error">@Model.ErrorMessage</div>
+            }
+        </form>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,118 @@
+﻿/* Import fontok */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Poppins:wght@300;400;500;600&family=Alex+Brush&display=swap');
+
+body.mg-body {
+    background: radial-gradient(circle at top, #020617 0, #000 55%, #020617 100%);
+    color: #e5e7eb;
+    font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    margin: 0;
+    min-height: 100vh;
+}
+
+/* Kosár táblázat */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+}
+
+th, td {
+    padding: 0.75rem 0.6rem;
+    border-bottom: 1px solid #1f2937;
+    text-align: center;
+}
+
+th {
+    color: #facc15;
+    text-transform: uppercase;
+}
+
+/* Termék kép */
+td img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 0.6rem;
+}
+
+/* Mennyiség gombok */
+.mennyiseg-gomb {
+    background: linear-gradient(145deg,#facc15,#fbbf24);
+    border: none;
+    color: #111827;
+    padding: 5px 12px;
+    font-weight: 600;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: transform 0.12s, box-shadow 0.12s;
+}
+
+    .mennyiseg-gomb:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 20px 45px rgba(250,204,21,0.7);
+    }
+
+/* Ár kiemelés */
+.price {
+    color: #facc15;
+    font-weight: 600;
+}
+
+/* Kosár gombok */
+.cart-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+    .cart-buttons a {
+        text-decoration: none;
+        padding: 0.7rem 1.2rem;
+        border-radius: 999px;
+        font-weight: 600;
+        transition: all 0.15s;
+    }
+
+.btn-vasarlas {
+    background: rgba(15,23,42,0.9);
+    color: #e5e7eb;
+    border: 1px solid rgba(148,163,184,0.55);
+}
+
+    .btn-vasarlas:hover {
+        background: radial-gradient(circle at 0 0, rgba(250,204,21,0.18), rgba(15,23,42,0.95));
+        color: #facc15;
+        border-color: #facc15;
+    }
+
+.btn-penztarhoz {
+    background: linear-gradient(145deg,#facc15,#fbbf24);
+    color: #111827;
+}
+
+    .btn-penztarhoz:hover {
+        filter: brightness(1.05);
+        box-shadow: 0 20px 45px rgba(250,204,21,0.7);
+    }
+
+/* Üres kosár üzenet */
+p {
+    text-align: center;
+    font-size: 1rem;
+    color: #9ca3af;
+}
+
+/* Mobilbarát */
+@media (max-width: 600px) {
+    td {
+        display: block;
+        padding: 8px 0;
+    }
+
+    .cart-buttons {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}

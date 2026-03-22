@@ -1,0 +1,38 @@
+﻿@page
+@model MagyarGravir.Shop.Pages.Shop.ProductModel
+@{
+    ViewData["Title"] = "Termékek";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/product.css" />
+}
+
+    @if (Model.CurrentProduct != null)
+    {
+        <div class="container">
+
+            <div class="image-wrapper">
+                <img src="@Model.CurrentProduct.MainImagePath" alt="@Model.CurrentProduct.Name" />
+            </div>
+
+            <div class="details">
+                <h1>@Model.CurrentProduct.Name</h1>
+
+                <div class="price">@Model.CurrentProduct.Price Ft</div>
+
+                <div class="category">
+                    Kategória: @Model.CurrentProduct.Category?.Name
+                </div>
+
+                <div class="desc">
+                    @Model.CurrentProduct.Description
+                </div>
+
+                <form method="post">
+                    <button type="submit">🛒 Kosárba</button>
+                </form>
+
+            </div>
+        </div>
+    }

@@ -1,0 +1,67 @@
+@* /Pages/Shared/_Layout.cshtml *@
+@using Microsoft.AspNetCore.Http
+@{
+    var isHome = ViewData["Title"]?.ToString() == "Főoldal";
+    var username = Context.Session.GetString("Username");
+}
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Magyar Gravír – @ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+    <!-- az alábbi sor felel azért, hogy az adott oldalhoz tartozó CSS töltődjön be -->
+    @RenderSection("Styles", required: false) 
+</head>
+<body class="mg-body">
+
+    <!-- HEADER -->
+    <header class="mg-header @(isHome ? "mg-header-home" : "")">
+        <div class="mg-header-inner">
+            <div class="mg-logo">
+                <div class="mg-logo-main">Magyar Gravír</div>
+                <div class="mg-logo-sub">Egyedi gravírozott ajándékok</div>
+                <div class="mg-engrave-line"></div>
+            </div>
+
+            <nav class="mg-nav">
+                <a asp-page="/Index">Főoldal</a>
+                <a asp-page="/Shop/Category" asp-route-id="1">Kategóriák</a>
+                <a asp-page="/Shop/Cart">Kosár</a>
+                <a asp-page="/Shop/Checkout">Rendelés</a>
+
+                <!-- Bejelentkezés / Regisztráció vagy Üdv, Username -->
+                <span class="mg-nav-auth">
+                    @if (string.IsNullOrEmpty(username))
+                    {
+                        <a asp-page="/Account/Login" class="mg-btn-login">Bejelentkezés</a>
+                        <a asp-page="/Account/Register" class="mg-btn-register">Regisztráció</a>
+                    }
+                    else
+                    {
+                        <span class="mg-username">Üdv, @username!</span>
+                        <a asp-page="/Account/Logout" class="mg-btn-logout">Kijelentkezés</a>
+                    }
+                </span>
+            </nav>
+        </div>
+    </header>
+
+    <!-- OLDAL TARTALMA -->
+    <main class="mg-main">
+        @RenderBody()
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="mg-footer">
+        <div>© @DateTime.Now.Year - Magyar Gravír - Minden jog fenntartva.</div>
+        <div class="mg-footer-links">
+            <a asp-page="/ASZF">Általános Szerződési Feltételek</a>
+            <span>•</span>
+            <a asp-page="/Kapcsolat">Kapcsolat</a>
+        </div>
+    </footer>
+
+</body>
+</html>

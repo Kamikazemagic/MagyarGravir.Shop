@@ -1,0 +1,18 @@
+﻿@page
+@model MagyarGravir.Shop.Pages.Shop.SuccessModel
+@{
+    ViewData["Title"] = "Köszönjük rendelését!";
+}
+
+<h1>Köszönjük a rendelést!</h1>
+
+@if (Model.Order != null)
+{
+    <p class="msg">Rendelés száma: #@Model.Order.Id</p>
+}
+else
+{
+    <p>Rendelés nem található.</p>
+}
+
+<a href="/Shop/Cart" style="color:#eab308;">Vissza a kosárhoz</a>

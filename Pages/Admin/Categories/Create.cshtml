@@ -1,0 +1,23 @@
+﻿@page
+@model MagyarGravir.Shop.Pages.Admin.Categories.CreateModel
+@{
+    ViewData["Title"] = "Admin - Kategória létrehozása";
+}
+ 
+<h1>Új kategória létrehozása</h1>
+
+    <form method="post">
+        <label>
+            Kategória neve:
+            <input asp-for="NewCategory.Name" />
+        </label>
+
+        <label>
+            Egyedi kategória?
+            <input asp-for="NewCategory.IsCustom" type="checkbox" />
+        </label>
+
+        <button type="submit">Mentés</button>
+    </form>
+
+<a href="/Admin/Categories" class="back">← Vissza</a>

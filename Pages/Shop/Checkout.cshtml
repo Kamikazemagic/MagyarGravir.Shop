@@ -1,0 +1,49 @@
+﻿@page
+@model MagyarGravir.Shop.Pages.Shop.CheckoutModel
+@{
+    ViewData["Title"] = "Pénztár";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/checkout.css"/>
+}
+
+    <h1>Rendelés leadása</h1>
+
+    @if (Model.Cart.Count == 0)
+    {
+        <p>A kosár üres.</p>
+    }
+    else
+    {
+        <h2>Rendelés összegzése</h2>
+
+        <table>
+            @foreach (var item in Model.Cart)
+            {
+                <tr>
+                    <td>@item.Name (x @item.Quantity)</td>
+                    <td class="price">@((item.Quantity * item.Price)) Ft</td>
+                </tr>
+            }
+        </table>
+
+        <p style="margin-top:10px; font-size:20px;">
+            Összesen:
+            <span class="price">
+                @Model.Cart.Sum(i => i.Price * i.Quantity) Ft
+            </span>
+        </p>
+
+        <h2>Vásárlói adatok</h2>
+
+        <form method="post">
+            <input asp-for="CustomerName" placeholder="Teljes név" required />
+            <input asp-for="Email" placeholder="Email cím" required />
+            <input asp-for="Address" placeholder="Szállítási cím" required />
+
+            <textarea asp-for="Note" rows="4" placeholder="Megjegyzés (opcionális)"></textarea>
+
+            <button type="submit">Rendelés elküldése</button>
+        </form>
+    }

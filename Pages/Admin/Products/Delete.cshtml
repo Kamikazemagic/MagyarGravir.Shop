@@ -1,0 +1,27 @@
+﻿@page
+@model MagyarGravir.Shop.Pages.Admin.Products.DeleteModel
+@{
+    ViewData["Title"] = "Admin - Termék törlés";
+}
+
+    <h1>Termék törlése</h1>
+
+    @if (Model.ProductToDelete != null)
+    {
+        <p class="warning">Biztosan törölni szeretnéd ezt a terméket?</p>
+
+        <p><strong>Név:</strong> @Model.ProductToDelete.Name</p>
+        <p><strong>Kategória:</strong> @Model.ProductToDelete.Category?.Name</p>
+        <p><strong>Ár:</strong> @Model.ProductToDelete.Price Ft</p>
+
+        @if (!string.IsNullOrEmpty(Model.ProductToDelete.MainImagePath))
+        {
+            <img src="@Model.ProductToDelete.MainImagePath" width="150" />
+        }
+
+        <form method="post">
+            <button type="submit" class="warning-btn">Igen, törlöm</button>
+        </form>
+
+        <a href="/Admin/Products" class="back">← Mégse</a>
+    }

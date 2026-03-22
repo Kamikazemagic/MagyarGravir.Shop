@@ -1,0 +1,44 @@
+﻿@page "/Admin/Products"
+@model MagyarGravir.Shop.Pages.Admin.Products.ProductListModel
+@{
+    ViewData["Title"] = "Admin - Termék kezelése";
+}
+
+<h1>Termékek kezelése</h1>
+
+    <a href="/Admin/Products/Create" class="button">Új termék</a>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Név</th>
+                <th>Kategória</th>
+                <th>Ár</th>
+                <th>Kép</th>
+                <th>Műveletek</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var p in Model.ProductList)
+            {
+                <tr>
+                    <td>@p.Id</td>
+                    <td>@p.Name</td>
+                    <td>@p.Category?.Name</td>
+                    <td>@p.Price Ft</td>
+                    <td>
+                        @if (!string.IsNullOrEmpty(p.MainImagePath))
+                        {
+                            <img src="/@p.MainImagePath" width="60" />
+                        }
+                    </td>
+                    <td>
+                        <a class="edit" href="/Admin/Products/Edit?id=@p.Id">Szerkesztés</a> |
+                        <a class="delete" href="/Admin/Products/Delete?id=@p.Id">Törlés</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>

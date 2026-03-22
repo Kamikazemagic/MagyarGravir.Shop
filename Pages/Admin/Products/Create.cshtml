@@ -1,0 +1,56 @@
+﻿@page
+@model MagyarGravir.Shop.Pages.Admin.Products.CreateModel
+@{
+    ViewData["Title"] = "Admin - Termék létrehozás";
+}
+
+<h1>Új termék létrehozása</h1>
+
+<form method="post" enctype="multipart/form-data">
+
+    <label>
+        Termék neve:
+        <input asp-for="NewProduct.Name" />
+    </label>
+
+    <label>
+        Leírás:
+        <textarea asp-for="NewProduct.Description" rows="4"></textarea>
+    </label>
+
+    <label>
+        Ár (Ft):
+        <input asp-for="NewProduct.Price" type="number" step="0.01" />
+    </label>
+
+    <label>
+        Kategória:
+        <select asp-for="NewProduct.CategoryId">
+            <option value="">-- válassz --</option>
+                @foreach (var c in Model.Categories)
+                {
+                    <option value="@c.Id">@c.Name</option>
+                }
+        </select>
+    </label>
+
+    <label>
+        Készleten lévő darab (ha üres → egyedi gyártás):
+        <input asp-for="NewProduct.StockQuantity" type="number" />
+    </label>
+
+    <label>
+        Aktív:
+        <input asp-for="NewProduct.IsActive" type="checkbox" />
+    </label>
+
+    <label>
+        Termék fő képe:
+        <input type="file" name="UploadImage" />
+    </label>
+
+
+    <button type="submit">Mentés</button>
+</form>
+
+<a href="/Admin/Products" class="back">← Vissza a listához</a>

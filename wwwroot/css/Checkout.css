@@ -1,0 +1,126 @@
+﻿/* Import fontok */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Poppins:wght@300;400;500;600&family=Alex+Brush&display=swap');
+
+body.mg-body {
+    background: radial-gradient(circle at top, #020617 0, #000 55%, #020617 100%);
+    color: #e5e7eb;
+    font-family: 'Poppins';
+    margin: 0;
+    min-height: 100vh;
+}
+
+/* Main tartalom */
+.mg-main {
+    max-width: 1120px;
+    margin: 1.5rem auto 3rem;
+    padding: 0 1.25rem;
+}
+
+/* Rendelés összegzés táblázat */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+}
+
+td {
+    padding: 0.75rem 0.6rem;
+    border-bottom: 1px solid #1f2937;
+}
+
+.price {
+    color: #facc15;
+    font-weight: 600;
+    text-align: right;
+}
+
+/* Card form */
+.card {
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto;
+    padding: 2.4rem 2rem 2rem;
+    border-radius: 1.5rem;
+    background: radial-gradient(circle at 0 0, rgba(250,204,21,0.08), rgba(15,23,42,0.96));
+    border: 1px solid rgba(148,163,184,0.4);
+    box-shadow: 0 28px 80px rgba(0,0,0,0.9);
+}
+
+    .card h2 {
+        font-family: 'Cinzel', serif;
+        font-size: 1.4rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        margin-bottom: 1.5rem;
+        color: #facc15;
+    }
+
+/* Form mezők */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+input, textarea {
+    padding: 0.65rem 0.9rem;
+    border-radius: 0.8rem;
+    border: 1px solid rgba(148,163,184,0.6);
+    background: rgba(15,23,42,0.95);
+    color: #e5e7eb;
+    font-size: 0.9rem;
+    font-family: 'Poppins';
+    transition: border 0.15s, box-shadow 0.15s;
+}
+
+    input::placeholder, textarea::placeholder {
+        color: #9ca3af;
+    }
+
+    input:focus, textarea:focus {
+        outline: none;
+        border-color: #facc15;
+        box-shadow: 0 0 0 2px rgba(250,204,21,0.25);
+    }
+
+/* Gomb */
+button {
+    padding: 0.7rem 1rem;
+    border-radius: 999px;
+    border: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    font-family: 'Poppins';
+    background: linear-gradient(145deg,#facc15,#fbbf24);
+    color: #111827;
+    cursor: pointer;
+    box-shadow: 0 15px 35px rgba(250,204,21,0.55);
+    transition: transform 0.12s ease-out, box-shadow 0.12s, filter 0.12s;
+}
+
+    button:hover {
+        transform: translateY(-1px);
+        filter: brightness(1.05);
+        box-shadow: 0 20px 45px rgba(250,204,21,0.7);
+    }
+
+/* Üzenetek */
+.text-danger {
+    font-size: 0.85rem;
+    color: #f87171;
+    font-family: 'Poppins';
+}
+
+.text-success {
+    font-size: 0.85rem;
+    color: #4ade80;
+    font-family: 'Poppins';
+}
+
+/* Mobilbarát */
+@media (max-width: 600px) {
+    .card {
+        padding: 1.8rem 1.2rem 1.5rem;
+    }
+}

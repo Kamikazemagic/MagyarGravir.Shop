@@ -1,0 +1,23 @@
+﻿@page
+@model MagyarGravir.Shop.Pages.Admin.Categories.DeleteModel
+@{
+    ViewData["Title"] = "Admin - Kategória törlése";
+}
+
+<h1>Kategória törlése</h1>
+
+    @if (Model.CategoryToDelete != null)
+    {
+        <p class="warning">
+            Biztosan törölni szeretnéd a következő kategóriát?
+        </p>
+
+        <p><strong>Név:</strong> @Model.CategoryToDelete.Name</p>
+        <p><strong>Egyedi kategória?</strong> @(Model.CategoryToDelete.IsCustom ? "Igen" : "Nem")</p>
+
+        <form method="post">
+            <button class="warning-btn">Igen, törlöm</button>
+        </form>
+
+        <a href="/Admin/Categories" class="back">← Mégse</a>
+    }

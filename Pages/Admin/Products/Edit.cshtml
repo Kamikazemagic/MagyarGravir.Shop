@@ -1,0 +1,66 @@
+﻿@page
+@model MagyarGravir.Shop.Pages.Admin.Products.EditModel
+@{
+    ViewData["Title"] = "Admin - Termék szerkesztés";
+}
+
+
+<h1>Termék szerkesztése</h1>
+
+    <form method="post" enctype="multipart/form-data">
+        <input type="hidden" asp-for="EditProduct.Id" />
+
+        <label>
+            Termék neve:
+            <input asp-for="EditProduct.Name" />
+        </label>
+
+        <label>
+            Leírás:
+            <textarea asp-for="EditProduct.Description" rows="4"></textarea>
+        </label>
+
+        <label>
+            Ár (Ft):
+            <input asp-for="EditProduct.Price" type="number" step="0.01" />
+        </label>
+
+        <label>
+            Kategória:
+            <select asp-for="EditProduct.CategoryId">
+                @foreach (var c in Model.Categories)
+                {
+                    <option value="@c.Id" selected="@(c.Id == Model.EditProduct.CategoryId)">
+                        @c.Name
+                    </option>
+                }
+            </select>
+        </label>
+
+        <label>
+            Készleten lévő darab:
+            <input asp-for="EditProduct.StockQuantity" type="number" />
+        </label>
+
+        <label>
+            Aktív:
+            <input asp-for="EditProduct.IsActive" type="checkbox" />
+        </label>
+
+        <div class="current-image">
+            @if (!string.IsNullOrEmpty(Model.EditProduct.MainImagePath))
+            {
+                <p>Jelenlegi kép:</p>
+                <img src="@Model.EditProduct.MainImagePath" width="120" />
+            }
+        </div>
+
+        <label>
+            Új kép feltöltése:
+            <input type="file" name="UploadImage" />
+        </label>
+
+        <button type="submit">Mentés</button>
+    </form>
+
+    <a href="/Admin/Products" class="back">← Vissza a listához</a>

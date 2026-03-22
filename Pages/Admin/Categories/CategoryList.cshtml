@@ -1,0 +1,35 @@
+﻿@page "/Admin/Categories"
+@model MagyarGravir.Shop.Pages.Admin.Categories.CategoryListModel
+@{
+    ViewData["Title"] = "Admin - Kategóriák kezelése";
+}
+
+<h1>Kategóriák kezelése</h1>
+
+<a class="button" href="/Admin/Categories/Create">Új kategória</a>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Név</th>
+            <th>Egyedi?</th>
+            <th>Műveletek</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var c in Model.Categories)
+        {
+            <tr>
+                <td>@c.Id</td>
+                <td>@c.Name</td>
+                <td>@(c.IsCustom ? "Igen" : "Nem")</td>
+                <td>
+                    <a href="/Admin/Categories/Edit?id=@c.Id" class="edit">Szerkesztés</a> |
+                    <a href="/Admin/Categories/Delete?id=@c.Id" class="delete">Törlés</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
