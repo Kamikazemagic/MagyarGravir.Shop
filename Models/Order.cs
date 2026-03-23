@@ -15,8 +15,10 @@ namespace MagyarGravir.Shop.Models
 
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
+
         // admin állapot
         public bool IsCompleted { get; set; } = false;
+        public string Status { get; set; } = "Pending"; // <-- ÚJ
 
         // rendelés sorok
         public List<OrderItem> Items { get; set; } = new();

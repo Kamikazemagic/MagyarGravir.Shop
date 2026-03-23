@@ -4,43 +4,54 @@
     ViewData["Title"] = "Admin - Rendelés részletei";
 }
 
-
 <h1>Rendelés #@Model.Order?.Id</h1>
 
 @if (Model.Order != null)
 {
-        <h3>Vevő adatai</h3>
-        <p><b>Név:</b> @Model.Order.CustomerName</p>
-        <p><b>Email:</b> @Model.Order.Email</p>
-        <p><b>Cím:</b> @Model.Order.Address</p>
-        <p><b>Megjegyzés:</b> @Model.Order.Note</p>
-        <p><b>Dátum:</b> @Model.Order.CreatedAt.ToLocalTime()</p>
+    <h3>Vevő adatai</h3>
+    <p><b>Név:</b> @Model.Order.CustomerName</p>
+    <p><b>Email:</b> @Model.Order.Email</p>
+    <p><b>Cím:</b> @Model.Order.Address</p>
+    <p><b>Megjegyzés:</b> @Model.Order.Note</p>
+    <p><b>Dátum:</b> @Model.Order.CreatedAt.ToLocalTime()</p>
 
-        <h3>Rendelés tételei</h3>
-        <table>
+    <h3>Rendelés tételei</h3>
+    <table>
+        <tr>
+            <th>Termék</th>
+            <th>Mennyiség</th>
+            <th>Ár</th>
+        </tr>
+        @foreach (var i in Model.Order.Items)
+        {
             <tr>
-                <th>Termék</th>
-                <th>Mennyiség</th>
-                <th>Ár</th>
+                <td>@i.ProductName</td>
+                <td>@i.Quantity</td>
+                <td>@i.UnitPrice Ft</td>
             </tr>
-            @foreach (var i in Model.Order.Items)
-            {
-                <tr>
-                    <td>@i.ProductName</td>
-                    <td>@i.Quantity</td>
-                    <td>@i.UnitPrice Ft</td>
-                </tr>
-            }
-        </table>
+        }
+    </table>
 
-        <h3>
-            Összesen:
-            <span class="price">
-                @(Model.Order.Items.Sum(x => x.Quantity * x.UnitPrice)) Ft
-            </span>
-        </h3>
+    <h3>
+        Összesen:
+        <span class="price">
+            @(Model.Order.Items.Sum(x => x.Quantity * x.UnitPrice)) Ft
+        </span>
+    </h3>
 
-        <form method="post" asp-page-handler="post">
-            <button type="submit">Rendelés teljesítve</button>
-        </form>
+    <form method="post">
+        <input type="hidden" name="id" value="@Model.Order.Id" />
+
+        <button asp-page-handler="Complete">
+            Rendelés teljesítve
+        </button>
+
+        <button asp-page-handler="Delete">
+            Rendelés törölve
+        </button>
+
+        <button asp-page-handler="Pending">
+            Feldolgozás alatt
+        </button>
+    </form>
 }

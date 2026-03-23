@@ -6,44 +6,49 @@
 
 <h1>Rendelések</h1>
 
-    <table>
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert-success">
+        @TempData["SuccessMessage"]
+    </div>
+}
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Név</th>
+        <th>Email</th>
+        <th>Dátum</th>
+        <th>Állapot</th>
+        <th>Művelet</th>
+    </tr>
+
+    @foreach (var o in Model.Orders)
+    {
         <tr>
-            <th>ID</th>
-            <th>Név</th>
-            <th>Email</th>
-            <th>Dátum</th>
-            <th>Állapot</th>
-            <th>Művelet</th>
+            <td>@o.Id</td>
+            <td>@o.CustomerName</td>
+            <td>@o.Email</td>
+            <td>@o.CreatedAt.ToLocalTime().ToString("yyyy.MM.dd HH:mm")</td>
+            <td>
+                @if (o.Status == "Completed")
+                {
+                    <span class="done">Teljesítve</span>
+                }
+                else if (o.Status == "Deleted")
+                {
+                    <span class="deleted">Törölve</span>
+                }
+                else
+                {
+                    <span class="pending">Feldolgozás alatt</span>
+                }
+            </td>
+            <td>
+                <a href="/Admin/Orders/Details?id=@o.Id">Megnyitás</a>
+            </td>
         </tr>
+    }
+</table>
 
-
-        @if (TempData["SuccessMessage"] != null)
-        {
-            <div class="alert-success">
-                @TempData["SuccessMessage"]
-            </div>
-        }
-
-        @foreach (var o in Model.Orders)
-        {
-            <tr>
-                <td>@o.Id</td>
-                <td>@o.CustomerName</td>
-                <td>@o.Email</td>
-                <td>@o.CreatedAt.ToLocalTime().ToString("yyyy.MM.dd HH:mm")</td>
-                <td>
-                    @if (o.IsCompleted)
-                    {
-                        <span class="done">Teljesítve</span>
-                    }
-                    else
-                    {
-                        <span class="pending">Feldolgozás alatt</span>
-                    }
-                </td>
-                <td>
-                    <a href="/Admin/Orders/Details?id=@o.Id">Megnyitás</a>
-                </td>
-            </tr>
-        }
-    </table>
+<a class="button" href="/Admin">Vissza</a>

@@ -17,7 +17,6 @@ namespace MagyarGravir.Shop.Pages.Admin.Orders
 
         public Order? Order { get; set; }
 
-        // Lekérjük a rendelést a részletekhez
         public async Task<IActionResult> OnGetAsync(int id)
         {
             Order = await _db.Orders
@@ -25,29 +24,48 @@ namespace MagyarGravir.Shop.Pages.Admin.Orders
                 .FirstOrDefaultAsync(o => o.Id == id);
 
             if (Order == null)
-                return RedirectToPage("./Index");
+                return RedirectToPage("/Admin/Orders/OrderList");
 
             return Page();
         }
 
-        // Teljesítés = fizikai törlés
         public async Task<IActionResult> OnPostCompleteAsync(int id)
         {
-            var order = await _db.Orders
-                .Include(o => o.Items)
-                .FirstOrDefaultAsync(o => o.Id == id);
+            var order = await _db.Orders.FindAsync(id);
+            if (order == null) return RedirectToPage("/Admin/Orders/OrderList");
 
-            if (order == null)
-                return RedirectToPage("./Index");
+            order.Status = "Completed";
 
-            _db.Orders.Remove(order);
             await _db.SaveChangesAsync();
 
-            // TempData-ban üzenet
-            TempData["SuccessMessage"] = $"A rendelés #{order.Id} teljesítve és törölve lett.";
+            TempData["SuccessMessage"] = $"A rendelés #{order.Id} teljesítve lett.";
+            return RedirectToPage("/Admin/Orders/OrderList");
+        }
 
-            // Vissza a listaoldalra
-            return RedirectToPage("./Index");
+        public async Task<IActionResult> OnPostDeleteAsync(int id)
+        {
+            var order = await _db.Orders.FindAsync(id);
+            if (order == null) return RedirectToPage("./Index");
+
+            order.Status = "Deleted";
+
+            await _db.SaveChangesAsync();
+
+            TempData["SuccessMessage"] = $"A rendelés #{order.Id} törölve lett.";
+            return RedirectToPage("/Admin/Orders/OrderList");
+        }
+
+        public async Task<IActionResult> OnPostPendingAsync(int id)
+        {
+            var order = await _db.Orders.FindAsync(id);
+            if (order == null) return RedirectToPage("./Index");
+
+            order.Status = "Pending";
+
+            await _db.SaveChangesAsync();
+
+            TempData["SuccessMessage"] = $"A rendelés #{order.Id} feldolgozás alatt van.";
+            return RedirectToPage("/Admin/Orders/OrderList");
         }
     }
 }
