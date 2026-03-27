@@ -13,6 +13,9 @@
         <input asp-for="Password" placeholder="Jelszó" type="password" required />
         <button type="submit">Bejelentkezés</button>
     </form>
+    <p>
+        <a asp-page="/Account/ForgotPassword">Elfelejtetted a jelszót?</a>
+    </p>
 
     @if (TempData["Error"] != null)
     {

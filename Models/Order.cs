@@ -9,7 +9,7 @@ namespace MagyarGravir.Shop.Models
 
         // vásárló adatai
         public string CustomerName { get; set; } = "";
-        public string Email { get; set; } = "";
+        public string? Email { get; set; }
         public string Address { get; set; } = "";
         public string? Note { get; set; }
 

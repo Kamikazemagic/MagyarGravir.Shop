@@ -1,5 +1,7 @@
-using Microsoft.EntityFrameworkCore;
 using MagyarGravir.Shop.Data;
+using MagyarGravir.Shop.Services;
+using Microsoft.EntityFrameworkCore;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +11,10 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 // Razor Pages
 builder.Services.AddRazorPages();
+
+// Services
+builder.Services.AddScoped<PasswordService>();
+builder.Services.AddScoped<EmailService>();
 
 // Session (kosárhoz)
 builder.Services.AddSession();
