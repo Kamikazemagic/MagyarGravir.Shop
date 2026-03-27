@@ -1,27 +1,34 @@
 ﻿@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Poppins:wght@300;400;500;600&family=Alex+Brush&display=swap');
 
+/* =========================
+   OLDAL ALAP (LOGIN SCREEN)
+   ========================= */
 body {
     display: flex;
-    height: 100vh;
-    margin: 0;
     justify-content: center;
     align-items: center;
-    color: white;
-    min-height: 100vh;
+    height: 100vh;
+    margin: 0;
     background: radial-gradient(circle at top, #020617 0, #000 55%, #020617 100%);
+    font-family: 'Poppins';
     color: #e5e7eb;
-    font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
+/* =========================
+   LOGIN KÁRTYA
+   ========================= */
 .login-box {
     width: 350px;
     margin: 0 auto;
-    background: #1c1c1c;
     padding: 30px;
+    background: #1c1c1c;
     border-radius: 10px;
     box-shadow: 0 0 20px #444;
 }
 
+/* =========================
+   INPUT MEZŐK
+   ========================= */
 .login-input {
     width: 100%;
     padding: 10px;
@@ -31,21 +38,34 @@ body {
     font-size: 16px;
 }
 
-.error {
-    color: #ff6b6b;
-    margin-top: 10px;
-    text-align: center;
-}
-
+/* =========================
+   BEJELENTKEZÉS GOMB
+   ========================= */
 .login-btn {
-    margin-top: 15px;
-    width: 100%;
+    width: 160px; /* kisebb gomb */
+    display: block;
+    margin: 15px auto 0; /* KÖZÉPRE TESZI */
     padding: 10px;
     background: #eab308;
     border: none;
-    color: black;
-    font-weight: bold;
     border-radius: 6px;
     font-size: 16px;
+    font-weight: bold;
+    color: black;
     cursor: pointer;
+}
+
+/* =========================
+   HIBA ÜZENET
+   ========================= */
+.error {
+    margin-top: 10px;
+    text-align: center;
+    color: #ff6b6b;
+}
+input,
+select,
+textarea,
+button {
+    font-family: 'Poppins', sans-serif;
 }

@@ -4,6 +4,7 @@
     box-sizing: border-box;
 }
 
+/* ===== ALAP OLDAL STÍLUS ===== */
 body.mg-body {
     margin: 0;
     min-height: 100vh;
@@ -12,7 +13,7 @@ body.mg-body {
     font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-/* HEADER */
+/* ===== FEJLÉC ===== */
 
 .mg-header {
     position: sticky;
@@ -37,6 +38,7 @@ body.mg-body {
     position: relative;
 }
 
+/* Logó főcím */
 .mg-logo-main {
     font-family: 'Cinzel', serif;
     font-size: 1.4rem;
@@ -45,14 +47,14 @@ body.mg-body {
     color: #facc15;
 }
 
+/* Logó alcím */
 .mg-logo-sub {
     font-size: 0.8rem;
     color: #9ca3af;
     margin-top: 0.2rem;
 }
 
-/* Moving engraving line under logo */
-
+/* Animált díszcsík a logó alatt */
 .mg-engrave-line {
     margin-top: 0.55rem;
     width: 180px;
@@ -74,7 +76,7 @@ body.mg-body {
     }
 }
 
-/* NAV */
+/* ===== NAVIGÁCIÓ ===== */
 
 .mg-nav {
     display: flex;
@@ -92,12 +94,14 @@ body.mg-body {
         transition: all 0.18s ease-out;
     }
 
+        /* Hover effekt */
         .mg-nav a:hover {
             color: #111827;
             background: linear-gradient(145deg,#facc15,#fbbf24);
             box-shadow: 0 0 18px rgba(250,204,21,0.55);
         }
 
+/* Kosár link */
 .mg-cart-link {
     display: inline-flex;
     align-items: center;
@@ -108,7 +112,7 @@ body.mg-body {
     font-size: 1.1rem;
 }
 
-/* MAIN LAYOUT */
+/* ===== FŐ TARTALOM ===== */
 
 .mg-main {
     max-width: 1120px;
@@ -116,7 +120,7 @@ body.mg-body {
     padding: 0 1.25rem;
 }
 
-/* HERO */
+/* ===== HERO SZEKCIÓ ===== */
 
 .mg-hero {
     position: relative;
@@ -128,6 +132,7 @@ body.mg-body {
     box-shadow: 0 28px 80px rgba(0,0,0,0.9);
 }
 
+/* Hero tartalom */
 .mg-hero-content {
     max-width: 520px;
 }
@@ -146,6 +151,8 @@ body.mg-body {
     max-width: 420px;
     line-height: 1.5;
 }
+
+/* ===== GOMBOK ===== */
 
 .mg-hero-buttons {
     margin-top: 1.5rem;
@@ -176,34 +183,13 @@ body.mg-body {
     font-size: 0.9rem;
 }
 
-/* SECTION */
+/* ===== SZEKCIÓK ===== */
 
 .mg-section {
     margin-top: 2.5rem;
 }
 
-.mg-section-header {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 1rem;
-    margin-bottom: 1.25rem;
-}
-
-.mg-section-title {
-    font-size: 1.2rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: #facc15;
-}
-
-.mg-section-subtitle {
-    font-size: 0.9rem;
-    color: #9ca3af;
-}
-
-/* CATEGORY PILLS */
+/* ===== KATEGÓRIA LISTA ===== */
 
 .mg-category-list {
     display: flex;
@@ -220,9 +206,10 @@ body.mg-body {
     color: #e5e7eb;
     background: radial-gradient(circle at 0 0, rgba(17,24,39,0.95), rgba(15,23,42,0.9));
     box-shadow: 0 8px 22px rgba(0,0,0,0.65);
-    transition: transform 0.16s ease-out, box-shadow 0.16s ease-out, border-color 0.16s, background 0.16s, color 0.16s;
+    transition: all 0.16s ease-out;
 }
 
+    /* Hover kategóriákon */
     .mg-category-pill:hover {
         transform: translateY(-1px);
         border-color: #facc15;
@@ -230,13 +217,15 @@ body.mg-body {
         color: #facc15;
     }
 
-/* PRODUCT GRID */
+/* ===== TERMÉK GRID ===== */
 
 .mg-product-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
     gap: 1.1rem;
 }
+
+/* ===== TERMÉK KÁRTYA ===== */
 
 .mg-product-card {
     text-decoration: none;
@@ -249,51 +238,17 @@ body.mg-body {
     display: flex;
     flex-direction: column;
     gap: 0.55rem;
-    transition: transform 0.17s ease-out, box-shadow 0.17s ease-out, border-color 0.17s;
+    transition: all 0.17s ease-out;
 }
 
+    /* Hover termékkártyán */
     .mg-product-card:hover {
         transform: translateY(-3px);
         box-shadow: 0 26px 55px rgba(0,0,0,0.95);
         border-color: #facc15;
     }
 
-.mg-product-img {
-    border-radius: 0.9rem;
-    background: radial-gradient(circle at 0 0, rgba(148,163,184,0.18), rgba(15,23,42,1));
-    overflow: hidden;
-    height: 180px;
-}
-
-    .mg-product-img img {
-        display: block;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-
-.mg-product-name {
-    font-size: 0.96rem;
-    font-weight: 500;
-}
-
-.mg-product-meta {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-size: 0.86rem;
-}
-
-.mg-price {
-    color: #facc15;
-    font-weight: 600;
-}
-
-.mg-product-category {
-    color: #9ca3af;
-}
-
-/* FOOTER */
+/* ===== LÁBLÉC ===== */
 
 .mg-footer {
     border-top: 1px solid rgba(31,41,55,0.8);
@@ -303,7 +258,7 @@ body.mg-body {
     color: #9ca3af;
 }
 
-/* TABLES */
+/* ===== TÁBLÁZATOK ===== */
 
 table {
     width: 100%;
@@ -321,26 +276,8 @@ th {
     color: #9ca3af;
 }
 
-/* RESPONSIVE */
+/* ===== LOGIN KÁRTYA ===== */
 
-@media (max-width: 768px) {
-    .mg-header-inner {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.8rem;
-    }
-
-    .mg-hero {
-        padding: 2.2rem 1.6rem;
-    }
-
-    .mg-hero-title {
-        font-size: 1.7rem;
-        letter-spacing: 0.12em;
-    }
-}
-
-/* Login kártya */
 .card {
     width: 100%;
     max-width: 420px;
@@ -349,10 +286,10 @@ th {
     background: radial-gradient(circle at 0 0, rgba(250,204,21,0.08), rgba(15,23,42,0.96));
     border: 1px solid rgba(148,163,184,0.4);
     box-shadow: 0 28px 80px rgba(0,0,0,0.9);
-    text-align: left; /* balra igazítás */
+    text-align: left;
 }
 
-    /* Cím */
+    /* Kártya cím */
     .card h2 {
         font-family: 'Cinzel', serif;
         font-size: 1.4rem;
@@ -362,7 +299,8 @@ th {
         color: #facc15;
     }
 
-/* Form */
+/* ===== FORM ===== */
+
 form {
     display: flex;
     flex-direction: column;
@@ -377,20 +315,23 @@ input {
     background: rgba(15,23,42,0.95);
     color: #e5e7eb;
     font-size: 0.9rem;
-    transition: border 0.15s, box-shadow 0.15s;
+    transition: all 0.15s;
 }
 
+    /* Placeholder */
     input::placeholder {
         color: #9ca3af;
     }
 
+    /* Focus */
     input:focus {
         outline: none;
         border-color: #facc15;
         box-shadow: 0 0 0 2px rgba(250,204,21,0.25);
     }
 
-/* Gomb */
+/* ===== GOMB ===== */
+
 button {
     margin-top: 0.5rem;
     padding: 0.7rem 1rem;
@@ -402,7 +343,7 @@ button {
     color: #111827;
     cursor: pointer;
     box-shadow: 0 15px 35px rgba(250,204,21,0.55);
-    transition: transform 0.12s ease-out, box-shadow 0.12s ease-out, filter 0.12s ease-out;
+    transition: all 0.12s ease-out;
 }
 
     button:hover {
@@ -411,7 +352,16 @@ button {
         box-shadow: 0 20px 45px rgba(250,204,21,0.7);
     }
 
-/* Üzenetek */
+/* LOGIN OLDAL KÖZÉPRE */
+.mg-main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+}
+
+/* ===== ÜZENETEK ===== */
+
 .text-danger {
     margin-top: 1rem;
     font-size: 0.85rem;
@@ -422,4 +372,11 @@ button {
     margin-top: 1rem;
     font-size: 0.85rem;
     color: #4ade80;
+}
+
+input,
+select,
+textarea,
+button {
+    font-family: 'Poppins', sans-serif;
 }

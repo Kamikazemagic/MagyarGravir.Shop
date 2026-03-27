@@ -697,3 +697,10 @@ th {
 .draggable {
     cursor: move;
 }
+
+input,
+select,
+textarea,
+button {
+    font-family: 'Poppins', sans-serif;
+}

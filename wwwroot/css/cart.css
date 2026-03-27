@@ -1,15 +1,19 @@
-﻿/* Import fontok */
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Poppins:wght@300;400;500;600&family=Alex+Brush&display=swap');
+﻿@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Poppins:wght@300;400;500;600&family=Alex+Brush&display=swap');
 
+/* =========================
+   OLDAL ALAP STÍLUS
+   ========================= */
 body.mg-body {
-    background: radial-gradient(circle at top, #020617 0, #000 55%, #020617 100%);
-    color: #e5e7eb;
-    font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
     margin: 0;
     min-height: 100vh;
+    background: radial-gradient(circle at top, #020617 0, #000 55%, #020617 100%);
+    font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    color: #e5e7eb;
 }
 
-/* Kosár táblázat */
+/* =========================
+   KOSÁR TÁBLÁZAT
+   ========================= */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -28,7 +32,9 @@ th {
     text-transform: uppercase;
 }
 
-/* Termék kép */
+/* =========================
+   TERMÉK KÉPEK
+   ========================= */
 td img {
     width: 80px;
     height: 80px;
@@ -36,14 +42,16 @@ td img {
     border-radius: 0.6rem;
 }
 
-/* Mennyiség gombok */
+/* =========================
+   MENNYISÉG GOMBOK
+   ========================= */
 .mennyiseg-gomb {
     background: linear-gradient(145deg,#facc15,#fbbf24);
     border: none;
     color: #111827;
     padding: 5px 12px;
-    font-weight: 600;
     border-radius: 999px;
+    font-weight: 600;
     cursor: pointer;
     transition: transform 0.12s, box-shadow 0.12s;
 }
@@ -53,13 +61,17 @@ td img {
         box-shadow: 0 20px 45px rgba(250,204,21,0.7);
     }
 
-/* Ár kiemelés */
+/* =========================
+   ÁR KIEMELÉS
+   ========================= */
 .price {
     color: #facc15;
     font-weight: 600;
 }
 
-/* Kosár gombok */
+/* =========================
+   KOSÁR GOMBOK
+   ========================= */
 .cart-buttons {
     display: flex;
     justify-content: flex-end;
@@ -75,6 +87,9 @@ td img {
         transition: all 0.15s;
     }
 
+/* =========================
+   VÁSÁRLÁS FOLYTATÁSA GOMB
+   ========================= */
 .btn-vasarlas {
     background: rgba(15,23,42,0.9);
     color: #e5e7eb;
@@ -87,6 +102,9 @@ td img {
         border-color: #facc15;
     }
 
+/* =========================
+   PÉNZTÁRHOZ GOMB
+   ========================= */
 .btn-penztarhoz {
     background: linear-gradient(145deg,#facc15,#fbbf24);
     color: #111827;
@@ -97,14 +115,18 @@ td img {
         box-shadow: 0 20px 45px rgba(250,204,21,0.7);
     }
 
-/* Üres kosár üzenet */
+/* =========================
+   ÜRES KOSÁR ÜZENET
+   ========================= */
 p {
     text-align: center;
     font-size: 1rem;
     color: #9ca3af;
 }
 
-/* Mobilbarát */
+/* =========================
+   MOBIL NÉZET
+   ========================= */
 @media (max-width: 600px) {
     td {
         display: block;
@@ -115,4 +137,10 @@ p {
         flex-direction: column;
         align-items: stretch;
     }
+}
+input,
+select,
+textarea,
+button {
+    font-family: 'Poppins', sans-serif;
 }

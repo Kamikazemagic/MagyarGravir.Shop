@@ -1,8 +1,5 @@
 ﻿@page "/Admin/Orders"
 @model MagyarGravir.Shop.Pages.Admin.Orders.OrderListModel
-@{
-    ViewData["Title"] = "Admin - Rendelések";
-}
 
 <h1>Rendelések</h1>
 
@@ -12,6 +9,15 @@
         @TempData["SuccessMessage"]
     </div>
 }
+
+<!-- 🔥 RESET GOMB (EGYEDÜL) -->
+<form method="post"
+      asp-page-handler="ResetTestData"
+      onsubmit="return confirm('Biztos törlöd az összes rendelést?')">
+    <button type="submit" style="background:red;color:white;">
+        Teszt adatok törlése
+    </button>
+</form>
 
 <table>
     <tr>

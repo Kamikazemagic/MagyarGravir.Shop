@@ -5,12 +5,14 @@
     margin: 0;
 }
 
+/* ===== FŐ ELRENDEZÉS ===== */
 .container {
     display: flex;
     gap: 40px;
     flex-wrap: wrap;
 }
 
+/* ===== TERMÉK KÉP ===== */
 .image-wrapper img {
     width: 400px;
     max-width: 100%;
@@ -18,10 +20,12 @@
     border: 2px solid #333;
 }
 
+/* ===== TERMÉK ADATOK ===== */
 .details {
     max-width: 500px;
 }
 
+/* ===== ÁR ===== */
 .price {
     font-size: 26px;
     color: #eab308;
@@ -29,16 +33,19 @@
     font-weight: bold;
 }
 
+/* ===== KATEGÓRIA ===== */
 .category {
     margin-top: 8px;
     color: #ccc;
 }
 
+/* ===== LEÍRÁS ===== */
 .desc {
     margin-top: 20px;
     line-height: 1.4;
 }
 
+/* ===== KOSÁR GOMB ===== */
 button {
     margin-top: 25px;
     padding: 12px 22px;
@@ -49,4 +56,11 @@ button {
     font-weight: bold;
     border-radius: 6px;
     cursor: pointer;
+}
+
+input,
+select,
+textarea,
+button {
+    font-family: 'Poppins', sans-serif;
 }

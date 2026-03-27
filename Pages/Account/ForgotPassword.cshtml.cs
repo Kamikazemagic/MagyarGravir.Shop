@@ -22,9 +22,10 @@ namespace MagyarGravir.Shop.Pages.Account
         }
 
         [BindProperty]
+    
         public string Email { get; set; } = string.Empty;
 
-        public string Message { get; set; } = string.Empty;
+        public string Message { get; set; } = "";   
 
         public async Task<IActionResult> OnPostAsync()
         {

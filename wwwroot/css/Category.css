@@ -1,13 +1,22 @@
-﻿.mg-main {
-    background: #111; /* a tartalom háttér */
-    color: white;
+﻿/* =========================
+   KATEGÓRIA OLDAL ALAP
+   ========================= */
+.mg-main {
+    background: #111; /* tartalom háttér */
+    color: #fff;
     padding: 20px;
 }
 
+/* =========================
+   CÍM
+   ========================= */
 h1 {
     color: #eab308;
 }
 
+/* =========================
+   TERMÉK RÁCS
+   ========================= */
 .products {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -15,16 +24,29 @@ h1 {
     margin-top: 20px;
 }
 
+/* =========================
+   TERMÉK KÁRTYA
+   ========================= */
 .product-card {
-    background: #1b1b1b;
-    padding: 15px;
-    border-radius: 8px;
-    border: 1px solid #333;
-    text-align: center;
+    display: block;
     text-decoration: none;
-    color: white;
+    color: #fff;
+    background: #1b1b1b;
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 15px;
+    text-align: center;
+    transition: transform 0.15s ease, border-color 0.15s ease;
 }
 
+    .product-card:hover {
+        transform: translateY(-3px);
+        border-color: #eab308;
+    }
+
+    /* =========================
+   TERMÉK KÉP
+   ========================= */
     .product-card img {
         width: 100%;
         max-height: 180px;
@@ -32,12 +54,24 @@ h1 {
         border-radius: 6px;
     }
 
+/* =========================
+   TERMÉK NEVE
+   ========================= */
 .name {
     font-weight: bold;
     margin-top: 10px;
 }
 
+/* =========================
+   ÁR
+   ========================= */
 .price {
     color: #eab308;
     margin-top: 5px;
+}
+input,
+select,
+textarea,
+button {
+    font-family: 'Poppins', sans-serif;
 }
