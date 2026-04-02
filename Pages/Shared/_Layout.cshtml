@@ -1,4 +1,6 @@
 @* /Pages/Shared/_Layout.cshtml *@
+@using MagyarGravir.Shop.Services
+@inject CategoryService CategoryService
 @using Microsoft.AspNetCore.Http
 @{
     var isHome = ViewData["Title"]?.ToString() == "Főoldal";
@@ -27,7 +29,22 @@
 
             <nav class="mg-nav">
                 <a asp-page="/Index">Főoldal</a>
-                <a asp-page="/Shop/Category" asp-route-id="1">Kategóriák</a>
+
+<div class="mg-dropdown">
+    <button class="mg-dropdown-btn">Kategóriák ▾</button>
+
+    <div class="mg-dropdown-content">
+        @foreach (var c in CategoryService.GetAll())
+        {
+            <a asp-page="/Shop/Category" asp-route-id="@c.Id">
+                @c.Name
+            </a>
+        }
+    </div>
+</div>
+                
+                
+                
                 <a asp-page="/Shop/Cart">Kosár</a>
                 <a asp-page="/Shop/Checkout">Rendelés</a>
 
