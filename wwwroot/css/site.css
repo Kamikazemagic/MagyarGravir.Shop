@@ -704,3 +704,68 @@ textarea,
 button {
     font-family: 'Poppins', sans-serif;
 }
+.mg-nav a,
+.mg-nav .mg-dropdown-btn {
+    border-radius: 999px;
+    padding: 0.35rem 0.8rem;
+    display: inline-block;
+    line-height: normal;
+}
+/* DROPDOWN ALAP */
+.mg-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* GOMB */
+.mg-dropdown-btn {
+    background: transparent;
+    border: 1px solid rgba(148,163,184,0.4);
+    color: #e5e7eb;
+    padding: 0.35rem 0.8rem;
+    border-radius: 999px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: 0.2s;
+}
+
+    .mg-dropdown-btn:hover {
+        background: rgba(250,204,21,0.15);
+        border-color: #facc15;
+    }
+
+/* MENÜ */
+.mg-dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 200px;
+    background: rgba(15,23,42,0.98);
+    border: 1px solid rgba(148,163,184,0.3);
+    border-radius: 0.8rem;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+    z-index: 999;
+    overflow: hidden;
+}
+
+    /* LINKEK */
+    .mg-dropdown-content a {
+        display: block;
+        padding: 0.6rem 0.9rem;
+        color: #e5e7eb;
+        text-decoration: none;
+        font-size: 0.9rem;
+        transition: 0.15s;
+    }
+
+        .mg-dropdown-content a:hover {
+            background: rgba(250,204,21,0.15);
+            color: #facc15;
+        }
+
+/* HOVER MEGNYITÁS */
+.mg-dropdown:hover .mg-dropdown-content {
+    display: block;
+}
+

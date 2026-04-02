@@ -31,7 +31,9 @@
                 <a asp-page="/Index">Főoldal</a>
 
 <div class="mg-dropdown">
-    <button class="mg-dropdown-btn">Kategóriák ▾</button>
+    <button type="button" class="mg-dropdown-btn">
+        Kategóriák ▾
+    </button>
 
     <div class="mg-dropdown-content">
         @foreach (var c in CategoryService.GetAll())
@@ -41,9 +43,7 @@
             </a>
         }
     </div>
-</div>
-                
-                
+</div>                
                 
                 <a asp-page="/Shop/Cart">Kosár</a>
                 <a asp-page="/Shop/Checkout">Rendelés</a>
