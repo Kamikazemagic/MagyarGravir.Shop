@@ -44,15 +44,15 @@
     <form method="post">
         <input type="hidden" name="id" value="@Model.Order.Id" />
 
-        <button asp-page-handler="Complete">
+        <button asp-page-handler="Complete" class="btn-complete">
             Rendelés teljesítve
         </button>
 
-        <button asp-page-handler="Delete">
+        <button asp-page-handler="Delete" class="btn-delete">
             Rendelés törölve
         </button>
 
-        <button asp-page-handler="Pending">
+        <button asp-page-handler="Pending" class="btn-pending">
             Feldolgozás alatt
         </button>
     </form>

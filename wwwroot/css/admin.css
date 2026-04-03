@@ -253,3 +253,41 @@ textarea {
         border-color: #444;
         transform: translateX(3px);
     }
+.btn-complete {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+    .btn-complete:hover {
+        background-color: #218838;
+    }
+
+.btn-delete {
+    background-color: #dc3545;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+    .btn-delete:hover {
+        background-color: #c82333;
+    }
+
+.btn-pending {
+    background-color: #ffc107;
+    color: black;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+    .btn-pending:hover {
+        background-color: #e0a800;
+    }
