@@ -31,9 +31,9 @@
                 <a asp-page="/Index">Főoldal</a>
 
 <div class="mg-dropdown">
-    <button type="button" class="mg-dropdown-btn">
-        Kategóriák ▾
-    </button>
+                    <a href="#" class="mg-dropdown-btn">
+                        Kategóriák ▾
+                    </a>
 
     <div class="mg-dropdown-content">
         @foreach (var c in CategoryService.GetAll())

@@ -769,3 +769,6 @@ button {
     display: block;
 }
 
+html {
+    overflow-y: scroll;
+}
