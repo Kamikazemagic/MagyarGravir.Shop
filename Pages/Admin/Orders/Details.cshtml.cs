@@ -67,5 +67,22 @@ namespace MagyarGravir.Shop.Pages.Admin.Orders
             TempData["SuccessMessage"] = $"A rendelés #{order.Id} feldolgozás alatt van.";
             return RedirectToPage("/Admin/Orders/OrderList");
         }
+        public async Task<IActionResult> OnPostHardDeleteAsync(int id)
+        {
+            var order = await _db.Orders
+                .Include(o => o.Items)
+                .FirstOrDefaultAsync(o => o.Id == id);
+
+            if (order == null)
+                return RedirectToPage("/Admin/Orders/OrderList");
+
+            _db.OrderItems.RemoveRange(order.Items);
+            _db.Orders.Remove(order);
+
+            await _db.SaveChangesAsync();
+
+            TempData["SuccessMessage"] = $"A rendelés #{order.Id} VÉGLEGESEN törölve lett!";
+            return RedirectToPage("/Admin/Orders/OrderList");
+        }
     }
 }

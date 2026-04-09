@@ -51,9 +51,11 @@
         <button asp-page-handler="Delete" class="btn-delete">
             Rendelés törölve
         </button>
-
-        <button asp-page-handler="Pending" class="btn-pending">
-            Feldolgozás alatt
+        <button asp-page-handler="HardDelete"
+                style="background:red;color:white;"
+                onclick="return confirm('EZ VÉGLEGES! Biztos törlöd?')">
+            ⚠ Végleges törlés
         </button>
+
     </form>
 }

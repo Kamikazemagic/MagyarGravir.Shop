@@ -28,8 +28,8 @@ namespace MagyarGravir.Shop.Pages.Admin.Categories
 
             _db.Categories.Add(NewCategory);
             await _db.SaveChangesAsync();
-
-            return RedirectToPage("/Admin/Categories/Index");
+           
+            return RedirectToPage("/Admin/Categories/Create"); // ide ugrik vissza feltötlés után
         }
     }
 }
